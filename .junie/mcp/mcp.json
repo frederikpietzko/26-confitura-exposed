@@ -1,0 +1,18 @@
+{
+    "mcpServers": {
+        "Slidev": {
+            "command": "/Users/frederik.pietzko/Workspace/26-confitura-exposed/node_modules/.bin/slidev",
+            "args": [
+                "mcp",
+                "/Users/frederik.pietzko/Workspace/26-confitura-exposed/slides.md"
+            ]
+        },
+        "Playwright": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@playwright/mcp@latest"
+            ]
+        }
+    }
+}

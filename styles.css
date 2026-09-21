@@ -1,0 +1,24 @@
+:root {
+    --fundamentals-purple: #7954f6;
+    --fundamentals-pink: #eb55e6;
+    --fundamentals-ink: #1f2023;
+    --drawn-annotation-color: var(--fundamentals-purple, #7954f6);
+    --code-window-columns: 80;
+}
+
+html.dark {
+    --fundamentals-ink: #f4f2f7;
+}
+
+.presentation-cover {
+    --cover-text-width: 62%;
+}
+
+.presentation-cover h1 {
+    max-width: none; white-space: nowrap; font-size: 5.2rem !important;
+    background: linear-gradient(120deg, var(--fundamentals-purple), var(--fundamentals-pink));
+    background-clip: text; -webkit-background-clip: text; color: transparent;
+}
+
+.presentation-cover h2 { font-size: 2rem; }
+.kodee-character { z-index: 0; }
