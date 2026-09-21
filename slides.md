@@ -1,5 +1,6 @@
 ---
 title: Thinking in Tables - Replacing Hibernate Magic with Exposed Logic in Spring Boot
+favicon: /Exposed icon.svg
 drawings:
   persist: false
 transition: fade
@@ -26,5 +27,39 @@ themeConfig:
 Exposed 1.5.0 · Kotlin 2.4.20
 
 ---
+layout: intro
+class: agenda
+---
 
-# Introduction
+# What we'll cover
+
+1. My subjective problems with JPA
+2. What is Exposed?
+3. SQL DSL
+4. Exposed in Spring Boot
+5. Schemas & Migrations
+6. Future Plans
+
+---
+src: ./pages/01-jpa-problems.md
+---
+
+---
+src: ./pages/02-what-is-exposed.md
+---
+
+---
+src: ./pages/03-sql-dsl.md
+---
+
+---
+src: ./pages/04-exposed-in-spring.md
+---
+
+---
+src: ./pages/05-schemas-and-migrations.md
+---
+
+---
+src: ./pages/06-future-plans.md
+---

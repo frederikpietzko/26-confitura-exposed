@@ -5,13 +5,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91d706af-540e-430c-82e5-a5ceefae470b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ktfmt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/26-confitura-exposed.iml" afterDir="false" />
+    <list default="true" id="91d706af-540e-430c-82e5-a5ceefae470b" name="Changes" comment="fix line height">
+      <change afterPath="$PROJECT_DIR$/pages/01-jpa-problems.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/02-what-is-exposed.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/03-sql-dsl.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/04-exposed-in-spring.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/05-schemas-and-migrations.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/06-future-plans.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/imported-slides.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides.md" beforeDir="false" afterPath="$PROJECT_DIR$/slides.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,61 +38,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000001251380946" />
-      <entry key="S2" value="1.020409610865378" />
-      <entry key="S5" value="1.3374571207332182" />
-      <entry key="S10" value="2.082496397873651" />
-      <entry key="S30" value="3.8709864175770448" />
-      <entry key="S60" value="5.270788472407646" />
-      <entry key="M2" value="7.870948584568076" />
-      <entry key="M5" value="13.241307073243252" />
-      <entry key="M10" value="17.179061229762862" />
-      <entry key="M15" value="19.58041142812856" />
-      <entry key="M30" value="28.50845036152609" />
-      <entry key="H1" value="51.40327056687958" />
-      <entry key="H2" value="82.04836766287194" />
-      <entry key="H4" value="107.87815807991811" />
-      <entry key="D1" value="137.8381481281751" />
-      <entry key="W1" value="143.95003505137475" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="1.1828937808138336E-79" />
+      <entry key="S2" value="1.9952446616713137E-20" />
+      <entry key="S5" value="2.3206643509162386E-8" />
+      <entry key="S10" value="3.169700295311485E-4" />
+      <entry key="S30" value="0.20458492370094708" />
+      <entry key="S60" value="1.1416696906559363" />
+      <entry key="M2" value="2.914321699756182" />
+      <entry key="M5" value="6.145850626646349" />
+      <entry key="M10" value="11.514527497527867" />
+      <entry key="M15" value="18.406450972894614" />
+      <entry key="M30" value="39.765127274090055" />
+      <entry key="H1" value="74.6752625176118" />
+      <entry key="H2" value="122.11840699168408" />
+      <entry key="H4" value="168.909396632787" />
+      <entry key="D1" value="232.33642789882663" />
+      <entry key="W1" value="246.52053230077456" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="1.6576872352132702E-209" />
-      <entry key="S30" value="2.5497691628608924E-70" />
-      <entry key="S60" value="1.5967996627194308E-35" />
-      <entry key="M2" value="3.995997575974527E-18" />
-      <entry key="M5" value="1.098120720737348E-7" />
-      <entry key="M10" value="3.3137904591831806E-4" />
-      <entry key="M15" value="0.004788689690799021" />
-      <entry key="M30" value="0.06920035903663374" />
-      <entry key="H1" value="0.2630596111846774" />
-      <entry key="H2" value="0.5128933721395488" />
-      <entry key="H4" value="0.7161657434836913" />
-      <entry key="D1" value="0.9458790152963017" />
-      <entry key="W1" value="0.9920828486338412" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0000000001475948" />
+      <entry key="S60" value="1.0000171422286541" />
+      <entry key="M2" value="1.005852837346937" />
+      <entry key="M5" value="1.2125943334004947" />
+      <entry key="M10" value="2.1503558966255443" />
+      <entry key="M15" value="3.52735339157295" />
+      <entry key="M30" value="7.2704201286364585" />
+      <entry key="H1" value="11.302273366500199" />
+      <entry key="H2" value="14.434232245455005" />
+      <entry key="H4" value="16.474413564245502" />
+      <entry key="D1" value="18.536793444939377" />
+      <entry key="W1" value="18.932647261896584" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9726549474122855" />
-      <entry key="MS500" value="0.9944702929469199" />
-      <entry key="S2" value="1.0189895827565778" />
-      <entry key="S5" value="1.3366844991114661" />
-      <entry key="S10" value="2.0809473642777734" />
-      <entry key="S30" value="3.858020884594009" />
-      <entry key="S60" value="5.254675710156797" />
-      <entry key="M2" value="7.858168372922448" />
-      <entry key="M5" value="13.234531504483003" />
-      <entry key="M10" value="17.175662800997205" />
-      <entry key="M15" value="19.58262216912717" />
-      <entry key="M30" value="28.57623819175099" />
-      <entry key="H1" value="51.66547315054367" />
-      <entry key="H2" value="82.56073172713145" />
-      <entry key="H4" value="108.59401669971393" />
-      <entry key="D1" value="138.78396774865465" />
-      <entry key="W1" value="144.94210917589433" />
+      <entry key="MS100" value="7.32656590157944E-12" />
+      <entry key="MS500" value="0.005928981456929898" />
+      <entry key="S2" value="0.2774885215470358" />
+      <entry key="S5" value="0.5988223829259982" />
+      <entry key="S10" value="0.7741431349194421" />
+      <entry key="S30" value="1.120361751489337" />
+      <entry key="S60" value="2.093554593884493" />
+      <entry key="M2" value="3.8911395951899506" />
+      <entry key="M5" value="7.341654918380166" />
+      <entry key="M10" value="13.651392132496955" />
+      <entry key="M15" value="21.921205218019644" />
+      <entry key="M30" value="47.02492352276631" />
+      <entry key="H1" value="85.96994458473755" />
+      <entry key="H2" value="136.54792765976862" />
+      <entry key="H4" value="185.38114316774764" />
+      <entry key="D1" value="250.87272226418412" />
+      <entry key="W1" value="265.4531067315732" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -118,11 +122,14 @@
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/frederik.pietzko/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;
   }
 }</component>
   <component name="RunManager">
@@ -161,5 +168,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <MESSAGE value="fix line height" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix line height" />
   </component>
 </project>

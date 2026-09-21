@@ -26,3 +26,126 @@ html.dark {
 
 .presentation-cover h2 { font-size: 2rem; }
 .kodee-character { z-index: 0; }
+
+/* Section intro slides (`layout: intro` + `class: section-intro`).
+   Reusable opener for every section: bold gradient headline, muted subtitle
+   and a short accent rule. Sized so a typical section title stays on one
+   line; longer titles wrap into balanced lines instead of overflowing.
+   Override per slide with `--section-intro-title-size` if needed. */
+.section-intro {
+    /* No featured mascot on these slides, so the text column may be wide. */
+    --cover-text-width: 85%;
+    --section-intro-title-size: 3.4rem;
+}
+
+.section-intro h1 {
+    font-size: var(--section-intro-title-size) !important;
+    line-height: 1.2;
+    padding-bottom: 0.12em;
+    font-weight: 800;
+    max-width: none;
+    text-wrap: balance;
+    background: linear-gradient(120deg, var(--fundamentals-purple), var(--fundamentals-pink));
+    background-clip: text; -webkit-background-clip: text; color: transparent;
+}
+
+.section-intro h1::after {
+    content: '';
+    display: block;
+    width: 6rem;
+    height: 0.35rem;
+    margin-top: 1.25rem;
+    border-radius: 999px;
+    background: linear-gradient(120deg, var(--fundamentals-purple), var(--fundamentals-pink));
+}
+
+.section-intro h2 {
+    margin-top: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    opacity: 0.75;
+}
+
+/* Code slides (`class: code-slide`): a headline sitting directly on top of a
+   code window looks cramped, so give the title some breathing room before the
+   first code block. */
+.code-slide h1 {
+    margin-bottom: 2.25rem;
+}
+
+.code-slide h1 + pre,
+.code-slide h1 + .slidev-code-wrapper,
+.code-slide h1 + .code-window {
+    margin-top: 0;
+}
+
+/* Two code windows stacked on one code slide (e.g. the snippet plus its query
+   log) need a visible gap so they don't read as a single block.
+   `!important` is required: Slidev itself sets
+   `.slidev-code-wrapper { margin: var(--slidev-code-margin) !important }`,
+   which silently wins over any plain rule here. Padding would work too, but
+   the language badge is absolutely positioned against the wrapper and would
+   then float above the editor. */
+.code-slide .slidev-code-wrapper ~ .slidev-code-wrapper {
+    margin-top: 3rem !important;
+}
+
+/* Click-revealed query log: same gap as a plain second code window (the
+   wrapper is nested in this div, so the sibling rule above no longer
+   applies), plus a short fade-and-rise when the click reveals it. */
+.code-slide .reveal-log {
+    margin-top: 3rem;
+}
+
+.reveal-log {
+    transition: opacity 350ms ease, transform 350ms ease;
+}
+
+.reveal-log.slidev-vclick-hidden {
+    opacity: 0;
+    transform: translateY(1rem);
+}
+
+/* Agenda slide: the ordered list becomes a numbered index — two-digit
+   gradient numerals with a hairline rule between the entries. */
+.agenda {
+    /* A little wider than the theme's 48%: the entries are single lines and
+       still stay clear of the featured mascot. */
+    --cover-text-width: 66%;
+}
+
+.agenda ol {
+    counter-reset: agenda;
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+}
+
+.agenda ol li {
+    counter-increment: agenda;
+    display: flex;
+    align-items: baseline;
+    gap: 2.75rem;
+    padding: 0.65rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    white-space: nowrap;
+    border-bottom: 1px solid color-mix(in srgb, var(--fundamentals-purple) 25%, transparent);
+}
+
+.agenda ol li:last-child {
+    border-bottom: none;
+}
+
+.agenda ol li::before {
+    content: counter(agenda, decimal-leading-zero);
+    flex: none;
+    min-width: 2.2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    background: linear-gradient(120deg, var(--fundamentals-purple), var(--fundamentals-pink));
+    background-clip: text; -webkit-background-clip: text; color: transparent;
+}
