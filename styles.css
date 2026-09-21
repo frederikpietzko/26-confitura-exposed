@@ -16,6 +16,10 @@ html.dark {
 
 .presentation-cover h1 {
     max-width: none; white-space: nowrap; font-size: 5.2rem !important;
+    /* The theme's `leading-20` (5rem) is shorter than this headline's font
+       size, so descenders such as the "g" fall outside the line box and get
+       clipped. Give the line enough room and a little breathing space below. */
+    line-height: 1.2; padding-bottom: 0.12em;
     background: linear-gradient(120deg, var(--fundamentals-purple), var(--fundamentals-pink));
     background-clip: text; -webkit-background-clip: text; color: transparent;
 }
