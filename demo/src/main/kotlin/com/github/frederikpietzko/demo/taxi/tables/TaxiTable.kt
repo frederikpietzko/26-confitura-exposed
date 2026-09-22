@@ -10,5 +10,5 @@ val format = Json { prettyPrint = true }
 object TaxiTable : LongIdTable("taxi") {
     val makeAndModel = json<MakeAndModel>("make_and_model", format)
     val carColor = varchar("car_color", 50)
-    val driverId = long("driver_id").references(DriverTable.id)
+    val driverId = reference("driver_id", DriverTable)
 }

@@ -1,31 +1,13 @@
 package com.github.frederikpietzko.demo.taxi.repository
 
-import com.github.frederikpietzko.demo.taxi.domain.Driver
-import com.github.frederikpietzko.demo.taxi.domain.DriverWithRideCount
-import com.github.frederikpietzko.demo.taxi.domain.Passenger
-import com.github.frederikpietzko.demo.taxi.domain.RideStatus
-import com.github.frederikpietzko.demo.taxi.domain.Taxi
-import com.github.frederikpietzko.demo.taxi.domain.TaxiRide
+import com.github.frederikpietzko.demo.taxi.domain.*
 import com.github.frederikpietzko.demo.taxi.tables.DriverTable
 import com.github.frederikpietzko.demo.taxi.tables.PassengerTable
 import com.github.frederikpietzko.demo.taxi.tables.TaxiRideTable
 import com.github.frederikpietzko.demo.taxi.tables.TaxiTable
-import org.jetbrains.exposed.v1.core.JoinType
-import org.jetbrains.exposed.v1.core.ResultRow
-import org.jetbrains.exposed.v1.core.SortOrder
-import org.jetbrains.exposed.v1.core.alias
-import org.jetbrains.exposed.v1.core.and
-import org.jetbrains.exposed.v1.core.count
-import org.jetbrains.exposed.v1.core.eq
-import org.jetbrains.exposed.v1.core.greaterEq
+import org.jetbrains.exposed.v1.core.*
 import org.jetbrains.exposed.v1.core.statements.UpdateBuilder
-import org.jetbrains.exposed.v1.jdbc.Query
-import org.jetbrains.exposed.v1.jdbc.deleteWhere
-import org.jetbrains.exposed.v1.jdbc.insertAndGetId
-import org.jetbrains.exposed.v1.jdbc.select
-import org.jetbrains.exposed.v1.jdbc.selectAll
-import org.jetbrains.exposed.v1.jdbc.update
-import org.jetbrains.exposed.v1.jdbc.upsertReturning
+import org.jetbrains.exposed.v1.jdbc.*
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 
@@ -174,7 +156,7 @@ private fun ResultRow.toTaxi() = Taxi(
     id = this[TaxiTable.id].value,
     makeAndModel = this[TaxiTable.makeAndModel],
     carColor = this[TaxiTable.carColor],
-    driverId = this[TaxiTable.driverId],
+    driverId = this[TaxiTable.driverId].value,
 )
 
 private fun ResultRow.toPassenger() = Passenger(
@@ -193,7 +175,7 @@ private fun ResultRow.toTaxiRide() = TaxiRide(
 )
 
 private fun ResultRow.toDriver() = Driver(
-    id = this[DriverTable.id],
+    id = this[DriverTable.id].value,
     firstName = this[DriverTable.firstName],
     lastName = this[DriverTable.lastName],
 )
