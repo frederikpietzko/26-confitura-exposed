@@ -53,6 +53,85 @@ class: module-slide
 -->
 
 ---
+class: code-slide
+---
 
-# Defining Tables
+# A table is an object, not an annotated class
+
+<DrawnAnnotation type="circle" text="Table(&quot;driver&quot;)" label="override the table name" :at="1">
+
+```kotlin no-compile
+object DriverTable : Table("driver")
+```
+
+</DrawnAnnotation>
+
+<!--
+- This is the demo project's driver table, built up in three steps
+- Read the first line out loud: a Kotlin object that IS the driver table
+  - No @Entity, no @Id, no @Column, no compiler plugin, no base entity class
+- Click: the table name is a string argument I pass
+  - Not a naming strategy, not a dialect default, not something I have to guess
+- Say it: this object is a description of a table, not a place to put my domain data
+  - My domain classes stay plain data classes, they never appear on these slides
+- Handover: a table without columns is not worth much -> give it an id
+-->
+
+---
+class: code-slide magicMove: true
+---
+
+# The primary key is an override, not an annotation
+
+<DrawnAnnotation type="box" text="override val primaryKey = PrimaryKey(id)" label="define primary keys" :at="1">
+
+```kotlin no-compile
+object DriverTable : Table("driver") {
+    val id = long("id").autoIncrement()
+    override val primaryKey = PrimaryKey(id)
+}
+```
+
+</DrawnAnnotation>
+
+<!--
+- The id is a val with a type: a Long column named id, auto incremented
+  - The column name is the string, the Kotlin name is mine - they are allowed to differ
+- Click: primaryKey is an override
+  - Table declares it, so the compiler is the one reminding me the table needs one
+  - No @Id, no @GeneratedValue, no guessing which field the provider picked
+- Say it out loud: this is DDL written in Kotlin, and it reads like DDL
+- Handover: now the interesting part, the columns -> and their types
+-->
+
+---
+class: code-slide magicMove: true
+---
+
+# A column carries its SQL type and its length
+
+<DrawnAnnotation type="underline" text="varchar(&quot;first_name&quot;, 50)" label="column definitions mirror database types" :at="1">
+
+```kotlin no-compile
+object DriverTable : Table("driver") {
+    val id = long("id").autoIncrement()
+    override val primaryKey = PrimaryKey(id)
+
+    val firstName = varchar("first_name", 50)
+    val lastName = varchar("last_name", 50)
+}
+```
+
+</DrawnAnnotation>
+
+<!--
+- This is now exactly the file the demo project compiles - same table, same columns
+- Click: varchar with a length, because the database column has a length
+  - In JPA that would be @Column(length = 50) and only if I remembered to write it
+  - Here I cannot forget it: the function asks me for the length
+- Point at the types: firstName is a Column<String>, id is a Column<Long>
+  - The table object is a value I can pass around, not a mapping the framework reads
+- Ask the room: who has ever been surprised by the DDL their entities generated?
+- Handover: now that the table exists as a value, I can use it to build queries -> SQL DSL
+-->
 
