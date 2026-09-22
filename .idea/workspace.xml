@@ -6,18 +6,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91d706af-540e-430c-82e5-a5ceefae470b" name="Changes" comment="progress">
+      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/DriverWithRideCount.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/demo/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Driver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Driver.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Taxi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Taxi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/BaseRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/BaseRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/DriverRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/DriverRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/TaxiRideRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/TaxiRideRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/Driver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/DriverTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/Passenger.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/PassengerTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/Taxi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/TaxiTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/TaxiRide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/TaxiRideTable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/kotlin/com/github/frederikpietzko/demo/taxi/repository/RepositoryIntegrationTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/test/kotlin/com/github/frederikpietzko/demo/taxi/repository/RepositoryIntegrationTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/03-sql-dsl.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/03-sql-dsl.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +51,8 @@
         <option value="Kotlin Object" />
         <option value="Kotlin File" />
         <option value="Kotlin Interface" />
-        <option value="Kotlin Data Class" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Data Class" />
       </list>
     </option>
   </component>
@@ -146,61 +139,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.6450851687685843" />
-      <entry key="MS500" value="3.5363511895830104" />
-      <entry key="S2" value="4.668635889081833" />
-      <entry key="S5" value="5.915718124138864" />
-      <entry key="S10" value="7.249179072352027" />
-      <entry key="S30" value="8.850745615820287" />
-      <entry key="S60" value="9.38997670106377" />
-      <entry key="M2" value="9.758043506846773" />
-      <entry key="M5" value="14.611311069839415" />
-      <entry key="M10" value="35.858626343723586" />
-      <entry key="M15" value="61.35767747902764" />
-      <entry key="M30" value="127.76096922116092" />
-      <entry key="H1" value="217.94209849486893" />
-      <entry key="H2" value="325.67136210215574" />
-      <entry key="H4" value="428.02762261877905" />
-      <entry key="D1" value="672.4830123991281" />
-      <entry key="W1" value="815.8992710270472" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0001208401862012" />
+      <entry key="S5" value="1.0458437415828312" />
+      <entry key="S10" value="1.435291658866738" />
+      <entry key="S30" value="3.9593541435763564" />
+      <entry key="S60" value="8.039128571415176" />
+      <entry key="M2" value="15.76747841393492" />
+      <entry key="M5" value="33.66256681460265" />
+      <entry key="M10" value="51.78074430026451" />
+      <entry key="M15" value="62.04384664349039" />
+      <entry key="M30" value="76.15408289041957" />
+      <entry key="H1" value="88.22212902900087" />
+      <entry key="H2" value="128.83564734687434" />
+      <entry key="H4" value="240.26207331736947" />
+      <entry key="D1" value="658.3668668663292" />
+      <entry key="W1" value="891.3490689175578" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="6.0694616985696295E-6" />
-      <entry key="MS500" value="0.09049613577372244" />
-      <entry key="S2" value="0.5484758486021746" />
-      <entry key="S5" value="0.7864353080821042" />
-      <entry key="S10" value="0.8868118786315979" />
-      <entry key="S30" value="0.9607502383242362" />
-      <entry key="S60" value="0.9802653951017134" />
-      <entry key="M2" value="1.0387531776135825" />
-      <entry key="M5" value="4.152994392452402" />
-      <entry key="M10" value="18.715356307948554" />
-      <entry key="M15" value="37.22274175232396" />
-      <entry key="M30" value="87.0588116880779" />
-      <entry key="H1" value="149.16238631951632" />
-      <entry key="H2" value="209.14904601208798" />
-      <entry key="H4" value="255.83558231652842" />
-      <entry key="D1" value="317.933344887202" />
-      <entry key="W1" value="337.13401907310777" />
+      <entry key="MS100" value="1.2985725449601173E-154" />
+      <entry key="MS500" value="1.6707725617974167E-31" />
+      <entry key="S2" value="2.3261902365938825E-8" />
+      <entry key="S5" value="0.0012284637737707592" />
+      <entry key="S10" value="0.04920115387465117" />
+      <entry key="S30" value="0.8389249364671474" />
+      <entry key="S60" value="2.998149923127036" />
+      <entry key="M2" value="7.87300892726405" />
+      <entry key="M5" value="20.069716858034994" />
+      <entry key="M10" value="32.84019827287722" />
+      <entry key="M15" value="40.21130909480882" />
+      <entry key="M30" value="50.61374679837558" />
+      <entry key="H1" value="59.57060934353859" />
+      <entry key="H2" value="86.23089531584009" />
+      <entry key="H4" value="151.64859221655666" />
+      <entry key="D1" value="331.7118243640426" />
+      <entry key="W1" value="394.6151978769319" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.6113438927051371" />
-      <entry key="MS500" value="3.542589476374" />
-      <entry key="S2" value="5.041496071203077" />
-      <entry key="S5" value="6.590457450135527" />
-      <entry key="S10" value="8.070499332681633" />
-      <entry key="S30" value="9.787162234658526" />
-      <entry key="S60" value="10.357732856821004" />
-      <entry key="M2" value="10.789631723709526" />
-      <entry key="M5" value="18.739551702342656" />
-      <entry key="M10" value="54.51024602904355" />
-      <entry key="M15" value="98.49482201484368" />
-      <entry key="M30" value="214.7193470490928" />
-      <entry key="H1" value="367.01709702229084" />
-      <entry key="H2" value="534.7573619786205" />
-      <entry key="H4" value="683.8236831243648" />
-      <entry key="D1" value="990.4079269989727" />
-      <entry key="W1" value="1153.032003995252" />
+      <entry key="MS100" value="5.386736203367112E-36" />
+      <entry key="MS500" value="8.836191951170809E-8" />
+      <entry key="S2" value="0.017295218515206715" />
+      <entry key="S5" value="0.23315365875641264" />
+      <entry key="S10" value="0.8736265018436624" />
+      <entry key="S30" value="4.417761290252441" />
+      <entry key="S60" value="10.725303127926974" />
+      <entry key="M2" value="23.375607558626108" />
+      <entry key="M5" value="53.51831479252354" />
+      <entry key="M10" value="84.45315984083351" />
+      <entry key="M15" value="102.11875491643112" />
+      <entry key="M30" value="126.6816428787454" />
+      <entry key="H1" value="147.74226457557924" />
+      <entry key="H2" value="215.032626292093" />
+      <entry key="H4" value="391.88334172501834" />
+      <entry key="D1" value="990.0692716490929" />
+      <entry key="W1" value="1285.9626734467606" />
     </decayedShown>
   </component>
   <component name="OptimizeOnSaveOptions">
@@ -294,6 +287,17 @@
       <GradleCoverageDisabled>false</GradleCoverageDisabled>
       <method v="2" />
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="demo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="demo" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="demo.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.github.frederikpietzko.demo.DemoApplication" />
@@ -337,6 +341,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="initial commit" />
     <MESSAGE value="fix line height" />
     <MESSAGE value="scaffolding &amp; jpa slides" />

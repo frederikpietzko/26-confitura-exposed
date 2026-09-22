@@ -4,18 +4,17 @@ import com.github.frederikpietzko.demo.taxi.domain.Driver
 import com.github.frederikpietzko.demo.taxi.tables.DriverTable
 import org.jetbrains.exposed.v1.core.ResultRow
 import org.jetbrains.exposed.v1.core.eq
-import org.jetbrains.exposed.v1.jdbc.deleteWhere
-import org.jetbrains.exposed.v1.jdbc.insertReturning
-import org.jetbrains.exposed.v1.jdbc.selectAll
-import org.jetbrains.exposed.v1.jdbc.update
-import org.jetbrains.exposed.v1.jdbc.upsertReturning
+import org.jetbrains.exposed.v1.jdbc.*
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 
 @Repository
 @Transactional
 class DriverRepository : BaseRepository<Driver> {
-    override fun findAll(): List<Driver> = DriverTable.selectAll().map(ResultRow::toDriver)
+    override fun findAll(): List<Driver> =
+        DriverTable.selectAll()
+            .orderBy(DriverTable.lastName)
+            .map(ResultRow::toDriver)
 
     override fun findById(id: Long): Driver? = DriverTable
         .selectAll()
@@ -33,7 +32,7 @@ class DriverRepository : BaseRepository<Driver> {
         requireNotNull(entity.id) { "`id` must not be null" }
         DriverTable
             .update(
-                { DriverTable.id eq entity.id }
+                where = { DriverTable.id eq entity.id }
             ) { statement ->
                 statement[id] = entity.id
                 statement[firstName] = entity.firstName

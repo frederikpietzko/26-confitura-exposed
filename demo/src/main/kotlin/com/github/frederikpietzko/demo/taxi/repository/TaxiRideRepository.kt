@@ -1,21 +1,13 @@
 package com.github.frederikpietzko.demo.taxi.repository
 
-import com.github.frederikpietzko.demo.taxi.domain.Passenger
-import com.github.frederikpietzko.demo.taxi.domain.Taxi
-import com.github.frederikpietzko.demo.taxi.domain.TaxiRide
+import com.github.frederikpietzko.demo.taxi.domain.*
+import com.github.frederikpietzko.demo.taxi.tables.DriverTable
 import com.github.frederikpietzko.demo.taxi.tables.PassengerTable
 import com.github.frederikpietzko.demo.taxi.tables.TaxiRideTable
 import com.github.frederikpietzko.demo.taxi.tables.TaxiTable
-import org.jetbrains.exposed.v1.core.JoinType
-import org.jetbrains.exposed.v1.core.ResultRow
-import org.jetbrains.exposed.v1.core.eq
+import org.jetbrains.exposed.v1.core.*
 import org.jetbrains.exposed.v1.core.statements.UpdateBuilder
-import org.jetbrains.exposed.v1.jdbc.Query
-import org.jetbrains.exposed.v1.jdbc.deleteWhere
-import org.jetbrains.exposed.v1.jdbc.insertAndGetId
-import org.jetbrains.exposed.v1.jdbc.selectAll
-import org.jetbrains.exposed.v1.jdbc.update
-import org.jetbrains.exposed.v1.jdbc.upsertReturning
+import org.jetbrains.exposed.v1.jdbc.*
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 
@@ -24,6 +16,27 @@ import org.springframework.transaction.annotation.Transactional
 @Suppress("TooManyFunctions")
 class TaxiRideRepository : BaseRepository<TaxiRide> {
     override fun findAll(): List<TaxiRide> = taxiRides().map(ResultRow::toTaxiRide)
+
+    fun findAllByPassengerIdAndStatus(passengerId: Long, status: RideStatus): List<TaxiRide> =
+        taxiRides()
+            .where { TaxiRideTable.passengerId eq passengerId and (TaxiRideTable.status eq status) }
+            .map(ResultRow::toTaxiRide)
+
+    val driverRideCount = TaxiRideTable.id.count().alias("driverRideCount")
+
+    fun countByDriverId(driverId: Long, minCount: Long = 0) = TaxiRideTable
+        .join(TaxiTable, JoinType.INNER, TaxiRideTable.taxiId, TaxiTable.id)
+        .join(DriverTable, JoinType.INNER, TaxiTable.driverId, DriverTable.id)
+        .select(DriverTable.id, DriverTable.firstName, DriverTable.lastName, driverRideCount)
+        .where { TaxiTable.driverId eq driverId and (driverRideCount greaterEq minCount) }
+        .orderBy(driverRideCount, SortOrder.DESC)
+        .distinctBy { DriverTable.id }
+        .map {
+            DriverWithRideCount(
+                driver = it.toDriver(),
+                rideCount = it[driverRideCount]
+            )
+        }
 
     override fun findById(id: Long): TaxiRide? = taxiRides()
         .where { TaxiRideTable.id eq id }
@@ -157,4 +170,10 @@ private fun ResultRow.toTaxiRide() = TaxiRide(
     pickupLocation = this[TaxiRideTable.pickupLocation],
     taxi = this.toTaxi(),
     passenger = this.toPassenger(),
+)
+
+private fun ResultRow.toDriver() = Driver(
+    id = this[DriverTable.id],
+    firstName = this[DriverTable.firstName],
+    lastName = this[DriverTable.lastName],
 )
