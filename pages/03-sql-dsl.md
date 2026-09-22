@@ -226,5 +226,147 @@ DELETE FROM driver WHERE driver.id = ?
 - Click: the statement returns the number of affected rows, so I can answer "did it exist?"
 - One statement, no cascade deciding to visit tables I did not mention
 - Whole repository now: five statements, five SQL logs, nothing in between
-- Handover: this is plain Exposed - now let Spring own the transactions -> section four
+- Handover: one table is easy - the interesting part starts with joins -> taxi rides
+-->
+
+---
+class: code-slide
+---
+
+# A join is written, not configured
+
+<DrawnAnnotation type="underline" text=".join(TaxiTable, INNER, TaxiRideTable.taxiId, TaxiTable.id)" label="the join lives in the query" :geometry="{ label: { x: 0.5, y: 0.45 } }" :on="1">
+<DrawnAnnotation type="underline" text=".join(PassengerTable, INNER, TaxiRideTable.passengerId, PassengerTable.id)" label="no mapping decides this for me" :geometry="{ label: { x: 0.5, y: 0.45 } }" :at="2">
+
+```kotlin no-compile
+override fun findAll(): List<TaxiRide> = TaxiRideTable
+    .join(TaxiTable, INNER, TaxiRideTable.taxiId, TaxiTable.id)
+    .join(PassengerTable, INNER, TaxiRideTable.passengerId, PassengerTable.id)
+    .selectAll()
+    .map(ResultRow::toTaxiRide)
+```
+
+```sql
+SELECT taxi_ride.*, taxi.*, passenger.*
+FROM taxi_ride
+INNER JOIN taxi ON taxi.id = taxi_ride.taxi_id
+INNER JOIN passenger ON passenger.id = taxi_ride.passenger_id
+```
+
+</DrawnAnnotation>
+</DrawnAnnotation>
+
+<!--
+- A ride needs its taxi and its passenger, so this is one statement with two joins
+- Click one and two: both joins are arguments, columns on both sides, checked by the compiler
+- No FetchType, no entity graph, no annotation somewhere else deciding this
+- Say it: three tables, one query - the N+1 from section one cannot happen here
+- Handover: I do not want to retype this join -> pull it out
+-->
+
+---
+class: code-slide
+---
+
+# The join is a value I can hand around
+
+<DrawnAnnotation type="box" text="private fun taxiRides(): Query" label="a `Query` is just a value" :geometry="{ label: { x: 0.5, y: 0.52 } }" :on="1">
+<DrawnAnnotation type="circle" text="taxiRides()" occurrence="2" label="every read starts here" :geometry="{ label: { x: 0.5, y: 0.52 } }" :at="2">
+
+```kotlin no-compile
+private fun taxiRides(): Query = TaxiRideTable
+    .join(TaxiTable, INNER, TaxiRideTable.taxiId, TaxiTable.id)
+    .join(PassengerTable, INNER, TaxiRideTable.passengerId, PassengerTable.id)
+    .selectAll()
+
+override fun findAll(): List<TaxiRide> = taxiRides().map(ResultRow::toTaxiRide)
+```
+
+</DrawnAnnotation>
+</DrawnAnnotation>
+
+<!--
+- Click one: a query is a normal Kotlin value, so I can name it and return it
+- Nothing runs yet - it runs when I iterate it
+- Click two: findAll is now one line, and the join is defined in exactly one place
+- Say it: this is reuse by function, not by inheritance or by a named query string
+- Handover: and every other read builds on the same value -> filtering
+-->
+
+---
+class: code-slide
+---
+
+# Filters are added to the query I already have
+
+<DrawnAnnotation type="underline" text="(TaxiRideTable.passengerId eq passengerId) and" label="two typed conditions, one expression" :geometry="{ label: { x: 0.5, y: 0.515 } }" :at="1">
+<DrawnAnnotation type="underline" text="(TaxiRideTable.status eq status)" :sequential="false" :at="1">
+
+```kotlin no-compile
+fun findAllByPassengerIdAndStatus(passengerId: Long, status: RideStatus) =
+    taxiRides()
+        .where {
+            (TaxiRideTable.passengerId eq passengerId) and
+                (TaxiRideTable.status eq status)
+        }
+        .map(ResultRow::toTaxiRide)
+```
+
+```sql
+SELECT taxi_ride.*, taxi.*, passenger.*
+FROM taxi_ride
+INNER JOIN taxi ON taxi.id = taxi_ride.taxi_id
+INNER JOIN passenger ON passenger.id = taxi_ride.passenger_id
+WHERE taxi_ride.passenger_id = ? AND taxi_ride.status = ?
+```
+
+</DrawnAnnotation>
+</DrawnAnnotation>
+
+<!--
+- Same join as before, one where clause on top - no new query, no new repository method name magic
+- Click: and is an infix function, so the condition is an expression I could also store in a val
+- status is an enum and the column knows it - no string, no converter to register
+- Compare: no derived query name to spell correctly, no JPQL to parse at startup
+- Handover: conditions are the easy case - now an aggregate -> countByDriverId
+-->
+
+---
+class: code-slide
+---
+
+# An aggregate is a value I name once
+
+<DrawnAnnotation type="box" text="val driverRideCount = TaxiRideTable.id.count().alias(&quot;driverRideCount&quot;)" label="`COUNT(...)` as a Kotlin value" :geometry="{ label: { x: 0.5, y: 0.85 } }" :on="1">
+<DrawnAnnotation type="underline" text="driverRideCount greaterEq minCount" label="filter on it" :geometry="{ label: { x: 0.5, y: 0.85 } }" :on="2">
+<DrawnAnnotation type="underline" text="orderBy(driverRideCount, SortOrder.DESC)" label="sort by it" :geometry="{ label: { x: 0.5, y: 0.85 } }" :on="3">
+<DrawnAnnotation type="underline" text="it[driverRideCount]" label="read it back, typed" :geometry="{ label: { x: 0.5, y: 0.85 } }" :at="4">
+
+```kotlin no-compile
+val driverRideCount = TaxiRideTable.id.count().alias("driverRideCount")
+
+fun countByDriverId(driverId: Long, minCount: Long = 0) = TaxiRideTable
+    .join(TaxiTable, INNER, TaxiRideTable.taxiId, TaxiTable.id)
+    .join(DriverTable, INNER, TaxiTable.driverId, DriverTable.id)
+    .select(DriverTable.id, DriverTable.firstName,
+            DriverTable.lastName, driverRideCount)
+    .where {
+        TaxiTable.driverId eq driverId and (driverRideCount greaterEq minCount)
+    }
+    .orderBy(driverRideCount, SortOrder.DESC)
+    .map { DriverWithRideCount(it.toDriver(), it[driverRideCount]) }
+```
+
+</DrawnAnnotation>
+</DrawnAnnotation>
+</DrawnAnnotation>
+</DrawnAnnotation>
+
+<!--
+- The complex query, and it still fits on one slide
+- Click one: the aggregate is a val - a COUNT I can pass around like any other value
+- Clicks two to four: same val in the filter, in the sort, and when reading the row back
+- Say it: try that with a string based query - you repeat the expression three times and hope
+- Point at the select list: I chose the columns, so I know what crosses the wire
+- Handover: that is the DSL - next, who owns the transaction -> Spring
 -->

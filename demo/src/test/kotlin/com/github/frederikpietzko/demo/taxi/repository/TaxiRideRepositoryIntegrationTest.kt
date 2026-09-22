@@ -1,6 +1,7 @@
 package com.github.frederikpietzko.demo.taxi.repository
 
 import com.github.frederikpietzko.demo.taxi.domain.Driver
+import com.github.frederikpietzko.demo.taxi.domain.DriverWithRideCount
 import com.github.frederikpietzko.demo.taxi.domain.MakeAndModel
 import com.github.frederikpietzko.demo.taxi.domain.Passenger
 import com.github.frederikpietzko.demo.taxi.domain.RideStatus
@@ -52,6 +53,53 @@ class TaxiRideRepositoryIntegrationTest @Autowired constructor(
         assertEquals(listOf("Warsaw Central", "Airport"), found.map { it.pickupLocation })
         assertEquals(listOf(first.taxi.id, second.taxi.id), found.map { it.taxi.id })
         assertEquals(listOf("grace@example.com", "ada@example.com"), found.map { it.passenger.email })
+    }
+
+    @Test
+    fun `findAllByPassengerIdAndStatus only returns the rides of that passenger in that status`() {
+        val requested = rides.create(aRide(status = RideStatus.REQUESTED))
+        rides.upsert(requested.copy(id = null, status = RideStatus.COMPLETED, pickupLocation = "Airport"))
+        rides.create(aRide(status = RideStatus.REQUESTED, email = "ada@example.com"))
+
+        val found = rides.findAllByPassengerIdAndStatus(requested.passenger.id!!, RideStatus.REQUESTED)
+
+        assertEquals(listOf(requested.id), found.map { it.id })
+        assertEquals(listOf("Warsaw Central"), found.map { it.pickupLocation })
+    }
+
+    @Test
+    fun `findAllByPassengerIdAndStatus returns nothing for an unknown passenger`() {
+        rides.create(aRide())
+
+        assertEquals(emptyList(), rides.findAllByPassengerIdAndStatus(4711L, RideStatus.REQUESTED))
+    }
+
+    @Test
+    fun `countByDriverId counts only the rides of the given driver`() {
+        val driver = drivers.create(Driver(firstName = "Ada", lastName = "Lovelace"))
+        rides.create(aRide(driverId = driver.id!!))
+        rides.create(aRide(driverId = driver.id, email = "ada@example.com"))
+        rides.create(aRide(email = "alan@example.com"))
+
+        val counts = rides.countByDriverId(driver.id)
+
+        assertEquals(listOf(DriverWithRideCount(driver = driver, rideCount = 2)), counts)
+    }
+
+    @Test
+    fun `countByDriverId drops drivers below the minimum ride count`() {
+        val driver = drivers.create(Driver(firstName = "Ada", lastName = "Lovelace"))
+        rides.create(aRide(driverId = driver.id!!))
+
+        assertEquals(emptyList(), rides.countByDriverId(driver.id, minCount = 2))
+    }
+
+    @Test
+    fun `countByDriverId returns nothing for a driver without rides`() {
+        val driver = drivers.create(Driver(firstName = "Grace", lastName = "Hopper"))
+        rides.create(aRide())
+
+        assertEquals(emptyList(), rides.countByDriverId(driver.id!!))
     }
 
     @Test
@@ -125,21 +173,18 @@ class TaxiRideRepositoryIntegrationTest @Autowired constructor(
         price: MonetaryAmount = euro("25.50"),
         pickupLocation: String = "Warsaw Central",
         email: String = "grace@example.com",
-    ): TaxiRide {
-        val driver = drivers.create(Driver(firstName = "Ada", lastName = "Lovelace"))
-
-        return TaxiRide(
-            status = status,
-            price = price,
-            pickupLocation = pickupLocation,
-            taxi = Taxi(
-                makeAndModel = MakeAndModel(make = "Skoda", model = "Octavia"),
-                carColor = "yellow",
-                driverId = driver.id!!,
-            ),
-            passenger = Passenger(name = "Grace Hopper", email = email),
-        )
-    }
+        driverId: Long = drivers.create(Driver(firstName = "Ada", lastName = "Lovelace")).id!!,
+    ): TaxiRide = TaxiRide(
+        status = status,
+        price = price,
+        pickupLocation = pickupLocation,
+        taxi = Taxi(
+            makeAndModel = MakeAndModel(make = "Skoda", model = "Octavia"),
+            carColor = "yellow",
+            driverId = driverId,
+        ),
+        passenger = Passenger(name = "Grace Hopper", email = email),
+    )
 
     private fun euro(amount: String): MonetaryAmount = Monetary
         .getDefaultAmountFactory()

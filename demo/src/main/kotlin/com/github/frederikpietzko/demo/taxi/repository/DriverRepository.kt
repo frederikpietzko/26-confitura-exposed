@@ -4,7 +4,11 @@ import com.github.frederikpietzko.demo.taxi.domain.Driver
 import com.github.frederikpietzko.demo.taxi.tables.DriverTable
 import org.jetbrains.exposed.v1.core.ResultRow
 import org.jetbrains.exposed.v1.core.eq
-import org.jetbrains.exposed.v1.jdbc.*
+import org.jetbrains.exposed.v1.jdbc.deleteWhere
+import org.jetbrains.exposed.v1.jdbc.insertReturning
+import org.jetbrains.exposed.v1.jdbc.selectAll
+import org.jetbrains.exposed.v1.jdbc.update
+import org.jetbrains.exposed.v1.jdbc.upsertReturning
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 
