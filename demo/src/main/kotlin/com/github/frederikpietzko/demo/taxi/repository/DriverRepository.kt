@@ -4,8 +4,11 @@ import com.github.frederikpietzko.demo.taxi.domain.Driver
 import com.github.frederikpietzko.demo.taxi.tables.DriverTable
 import org.jetbrains.exposed.v1.core.ResultRow
 import org.jetbrains.exposed.v1.core.eq
-import org.jetbrains.exposed.v1.core.statements.UpdateBuilder
-import org.jetbrains.exposed.v1.jdbc.*
+import org.jetbrains.exposed.v1.jdbc.deleteWhere
+import org.jetbrains.exposed.v1.jdbc.insertReturning
+import org.jetbrains.exposed.v1.jdbc.selectAll
+import org.jetbrains.exposed.v1.jdbc.update
+import org.jetbrains.exposed.v1.jdbc.upsertReturning
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 
@@ -57,19 +60,6 @@ class DriverRepository : BaseRepository<Driver> {
     override fun deleteById(id: Long): Boolean {
         return DriverTable.deleteWhere { DriverTable.id eq id } > 0
     }
-
-
-    context(statement: UpdateBuilder<*>)
-    private fun DriverTable.updateStatement(entity: Driver) {
-        if (entity.id != null) {
-            statement[id] = entity.id
-        }
-
-        statement[firstName] = entity.firstName
-        statement[lastName] = entity.lastName
-    }
-
-    private fun Query.idQuery(id: Long) = this.where { DriverTable.id eq id }
 }
 
 private fun ResultRow.toDriver() = Driver(

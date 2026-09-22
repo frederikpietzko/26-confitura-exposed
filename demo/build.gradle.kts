@@ -71,6 +71,7 @@ kotlin {
 detekt {
     toolVersion = libs.versions.detekt.get()
     buildUponDefaultConfig = true
+    config.setFrom(layout.projectDirectory.file("config/detekt/detekt.yml"))
 }
 
 tasks.withType<dev.detekt.gradle.Detekt>().configureEach {

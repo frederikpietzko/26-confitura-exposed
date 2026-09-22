@@ -10,7 +10,12 @@ import org.jetbrains.exposed.v1.core.JoinType
 import org.jetbrains.exposed.v1.core.ResultRow
 import org.jetbrains.exposed.v1.core.eq
 import org.jetbrains.exposed.v1.core.statements.UpdateBuilder
-import org.jetbrains.exposed.v1.jdbc.*
+import org.jetbrains.exposed.v1.jdbc.Query
+import org.jetbrains.exposed.v1.jdbc.deleteWhere
+import org.jetbrains.exposed.v1.jdbc.insertAndGetId
+import org.jetbrains.exposed.v1.jdbc.selectAll
+import org.jetbrains.exposed.v1.jdbc.update
+import org.jetbrains.exposed.v1.jdbc.upsertReturning
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 
@@ -46,15 +51,18 @@ class TaxiRideRepository : BaseRepository<TaxiRide> {
     }
 
     override fun update(entity: TaxiRide): TaxiRide {
+        val taxiId = requireNotNull(entity.taxi.id) { "`taxi.id` must not be null" }
+        val passengerId = requireNotNull(entity.passenger.id) { "`passenger.id` must not be null" }
+
         TaxiTable.update(
-            { TaxiTable.id eq entity.taxi.id }
+            { TaxiTable.id eq taxiId }
         ) { it.updateTaxi(entity.taxi) }
         PassengerTable.update(
-            { PassengerTable.id eq entity.passenger.id }
+            { PassengerTable.id eq passengerId }
         ) { it.updatePassenger(entity.passenger) }
         TaxiRideTable.update(
             { TaxiRideTable.id eq entity.id }
-        ) { it.updateRide(entity, entity.taxi.id!!, entity.passenger.id!!) }
+        ) { it.updateRide(entity, taxiId, passengerId) }
         return entity
     }
 

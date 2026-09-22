@@ -5,7 +5,6 @@ import kotlinx.serialization.json.Json
 import org.jetbrains.exposed.v1.core.dao.id.LongIdTable
 import org.jetbrains.exposed.v1.json.json
 
-
 val format = Json { prettyPrint = true }
 
 object TaxiTable : LongIdTable("taxi") {
@@ -13,4 +12,3 @@ object TaxiTable : LongIdTable("taxi") {
     val carColor = varchar("car_color", 50)
     val driverId = long("driver_id").references(DriverTable.id)
 }
-

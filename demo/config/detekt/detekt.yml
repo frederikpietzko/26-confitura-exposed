@@ -1,0 +1,23 @@
+# Only the deviations from detekt's own defaults live here - the build sets
+# `buildUponDefaultConfig = true`, so everything not mentioned keeps detekt's default.
+
+performance:
+  SpreadOperator:
+    # `runApplication<DemoApplication>(*args)` is the canonical Spring Boot entry point
+    excludes: ['**/DemoApplication.kt']
+
+ktlint:
+  # The ktlint wrapper otherwise enforces the `ktlint_official` layout on top of the
+  # default code style. This project sticks to the plain Kotlin/IntelliJ formatting the
+  # IDE produces out of the box, so the official-style-only rules stay off.
+  code_style: 'intellij_idea'
+  ClassSignature:
+    active: false
+  FunctionSignature:
+    active: false
+  FunctionExpressionBody:
+    active: false
+  TrailingCommaOnCallSite:
+    active: false
+  TrailingCommaOnDeclarationSite:
+    active: false

@@ -6,20 +6,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91d706af-540e-430c-82e5-a5ceefae470b" name="Changes" comment="progress">
-      <change afterPath="$PROJECT_DIR$/.idea/detekt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Passenger.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/BaseRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/DriverRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/TaxiRideRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/demo/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/gradle/libs.versions.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Driver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Driver.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Taxi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Taxi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/TaxiRide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/TaxiRide.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/db/migration/V20260922103614__INITIAL_SCHEMA.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/03-sql-dsl.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/03-sql-dsl.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/BaseRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/BaseRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/DriverRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/DriverRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/TaxiRideRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/TaxiRideRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/Driver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/DriverTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/Passenger.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/PassengerTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/Taxi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/TaxiTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/TaxiRide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/TaxiRideTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/test/kotlin/com/github/frederikpietzko/demo/taxi/repository/RepositoryIntegrationTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/test/kotlin/com/github/frederikpietzko/demo/taxi/repository/RepositoryIntegrationTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +35,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/demo">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -145,61 +146,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000107304233874" />
-      <entry key="S5" value="1.01428019401929" />
-      <entry key="S10" value="1.1899633016299151" />
-      <entry key="S30" value="3.1587129960000153" />
-      <entry key="S60" value="7.561321831594034" />
-      <entry key="M2" value="17.074200307939165" />
-      <entry key="M5" value="42.10474201822303" />
-      <entry key="M10" value="77.26581718828966" />
-      <entry key="M15" value="106.45589613520073" />
-      <entry key="M30" value="169.50443931513772" />
-      <entry key="H1" value="249.4681129829993" />
-      <entry key="H2" value="345.75434645841653" />
-      <entry key="H4" value="437.49218827833573" />
-      <entry key="D1" value="667.526934820288" />
-      <entry key="W1" value="806.7729596645501" />
+      <entry key="MS100" value="1.6450851687685843" />
+      <entry key="MS500" value="3.5363511895830104" />
+      <entry key="S2" value="4.668635889081833" />
+      <entry key="S5" value="5.915718124138864" />
+      <entry key="S10" value="7.249179072352027" />
+      <entry key="S30" value="8.850745615820287" />
+      <entry key="S60" value="9.38997670106377" />
+      <entry key="M2" value="9.758043506846773" />
+      <entry key="M5" value="14.611311069839415" />
+      <entry key="M10" value="35.858626343723586" />
+      <entry key="M15" value="61.35767747902764" />
+      <entry key="M30" value="127.76096922116092" />
+      <entry key="H1" value="217.94209849486893" />
+      <entry key="H2" value="325.67136210215574" />
+      <entry key="H4" value="428.02762261877905" />
+      <entry key="D1" value="672.4830123991281" />
+      <entry key="W1" value="815.8992710270472" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="2.6124886313558667E-8" />
-      <entry key="MS500" value="0.030437633391976273" />
-      <entry key="S2" value="0.4176935937786412" />
-      <entry key="S5" value="0.7127692845491036" />
-      <entry key="S10" value="0.929690579888267" />
-      <entry key="S30" value="1.9232119567070325" />
-      <entry key="S60" value="4.798618505073679" />
-      <entry key="M2" value="11.459102062794566" />
-      <entry key="M5" value="28.046196703086544" />
-      <entry key="M10" value="52.80794564364053" />
-      <entry key="M15" value="75.0235388782024" />
-      <entry key="M30" value="123.85080368747475" />
-      <entry key="H1" value="177.74156544077084" />
-      <entry key="H2" value="227.98160260469092" />
-      <entry key="H4" value="266.6998212683777" />
-      <entry key="D1" value="319.3461654025455" />
-      <entry key="W1" value="336.4984025969256" />
+      <entry key="MS100" value="6.0694616985696295E-6" />
+      <entry key="MS500" value="0.09049613577372244" />
+      <entry key="S2" value="0.5484758486021746" />
+      <entry key="S5" value="0.7864353080821042" />
+      <entry key="S10" value="0.8868118786315979" />
+      <entry key="S30" value="0.9607502383242362" />
+      <entry key="S60" value="0.9802653951017134" />
+      <entry key="M2" value="1.0387531776135825" />
+      <entry key="M5" value="4.152994392452402" />
+      <entry key="M10" value="18.715356307948554" />
+      <entry key="M15" value="37.22274175232396" />
+      <entry key="M30" value="87.0588116880779" />
+      <entry key="H1" value="149.16238631951632" />
+      <entry key="H2" value="209.14904601208798" />
+      <entry key="H4" value="255.83558231652842" />
+      <entry key="D1" value="317.933344887202" />
+      <entry key="W1" value="337.13401907310777" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.06163954408667148" />
-      <entry key="MS500" value="0.5816588191244263" />
-      <entry key="S2" value="1.1771027266206457" />
-      <entry key="S5" value="1.5867176209065477" />
-      <entry key="S10" value="2.013770003745472" />
-      <entry key="S30" value="4.966657407566001" />
-      <entry key="S60" value="12.203593325774985" />
-      <entry key="M2" value="28.339316073258402" />
-      <entry key="M5" value="69.95374912130518" />
-      <entry key="M10" value="129.88761266727323" />
-      <entry key="M15" value="181.30392699753844" />
-      <entry key="M30" value="293.21132182516936" />
-      <entry key="H1" value="427.10510170593744" />
-      <entry key="H2" value="573.6670132429717" />
-      <entry key="H4" value="704.150703816488" />
-      <entry key="D1" value="986.8646147527727" />
-      <entry key="W1" value="1143.2700760393504" />
+      <entry key="MS100" value="1.6113438927051371" />
+      <entry key="MS500" value="3.542589476374" />
+      <entry key="S2" value="5.041496071203077" />
+      <entry key="S5" value="6.590457450135527" />
+      <entry key="S10" value="8.070499332681633" />
+      <entry key="S30" value="9.787162234658526" />
+      <entry key="S60" value="10.357732856821004" />
+      <entry key="M2" value="10.789631723709526" />
+      <entry key="M5" value="18.739551702342656" />
+      <entry key="M10" value="54.51024602904355" />
+      <entry key="M15" value="98.49482201484368" />
+      <entry key="M30" value="214.7193470490928" />
+      <entry key="H1" value="367.01709702229084" />
+      <entry key="H2" value="534.7573619786205" />
+      <entry key="H4" value="683.8236831243648" />
+      <entry key="D1" value="990.4079269989727" />
+      <entry key="W1" value="1153.032003995252" />
     </decayedShown>
   </component>
   <component name="OptimizeOnSaveOptions">
@@ -220,6 +221,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;CidrDebugProfileConversion&quot;: &quot;true&quot;,
+    &quot;Gradle.demo [detekt].executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -255,12 +257,42 @@
       <recent name="com.github.frederikpietzko.demo.taxi" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle detekt" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.demo [detekt]">
     <configuration default="true" type="AppleRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" IS_LOCATION_SIMULATION_SUPPORTED="false" IS_LOCATION_SIMULATION_ALLOWED="true" APPLICATION_LANGUAGE="IDELaunchSchemeLanguageUseSystemLanguage" APPLICATION_REGION="" DEVELOPMENT_TEAM="" MAKE_ACTIVE="TRUE" SHOULD_DEBUG_EXTENSIONS="false">
       <embedded_app_extension_list />
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="demo [detekt]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/demo" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="detekt" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
     </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="demo.main" />
@@ -269,6 +301,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.demo [detekt]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>

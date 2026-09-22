@@ -14,4 +14,5 @@ import org.springframework.transaction.annotation.Transactional
 @Import(PostgresContainerConfiguration::class)
 @Transactional
 @Tag("integration")
+@Suppress("AbstractClassCanBeInterface")
 abstract class RepositoryIntegrationTest
