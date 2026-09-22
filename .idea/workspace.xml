@@ -7,6 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="91d706af-540e-430c-82e5-a5ceefae470b" name="Changes" comment="progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/TaxiRide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/TaxiRide.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/02-what-is-exposed.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/02-what-is-exposed.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,9 +50,73 @@
     </option>
   </component>
   <component name="FormatOnSaveOptions">
-    <option name="myAllFileTypesSelected" value="true" />
     <option name="mySelectedFileTypes">
-      <set />
+      <set>
+        <option value="Angular2Html" />
+        <option value="Asset Catalog Contents" />
+        <option value="CSS" />
+        <option value="CassandraQL" />
+        <option value="ChildProcessDebugging" />
+        <option value="DGM" />
+        <option value="DTD" />
+        <option value="EditorConfig" />
+        <option value="FTL" />
+        <option value="Flow" />
+        <option value="Go" />
+        <option value="Gradle" />
+        <option value="Gradle Declarative Configuration Language" />
+        <option value="Groovy" />
+        <option value="HTML" />
+        <option value="HTTP Request" />
+        <option value="Helmfile" />
+        <option value="HiveQL" />
+        <option value="JAVA" />
+        <option value="JSHELL" />
+        <option value="JSHint" />
+        <option value="JSON" />
+        <option value="JSON-lines" />
+        <option value="JSON5" />
+        <option value="JSX" />
+        <option value="Java module" />
+        <option value="JavaScript" />
+        <option value="Kotlin" />
+        <option value="Kubernetes Yaml" />
+        <option value="Less" />
+        <option value="Mermaid" />
+        <option value="Natjmc" />
+        <option value="Natstepfilter" />
+        <option value="Natvis" />
+        <option value="ObjectiveC" />
+        <option value="PostCSS" />
+        <option value="Properties" />
+        <option value="Qute" />
+        <option value="RNG Compact" />
+        <option value="Redis" />
+        <option value="SARIF" />
+        <option value="SCSS" />
+        <option value="SQL" />
+        <option value="SVG" />
+        <option value="Sass" />
+        <option value="Shell Script" />
+        <option value="SourceMap" />
+        <option value="Storyboard" />
+        <option value="Swift" />
+        <option value="TOML" />
+        <option value="TypeScript" />
+        <option value="TypeScript JSX" />
+        <option value="VTL" />
+        <option value="Vue.js" />
+        <option value="XHTML" />
+        <option value="XIB" />
+        <option value="XML" />
+        <option value="YAML" />
+        <option value="gdsl" />
+        <option value="intentdefinition" />
+        <option value="logback" />
+        <option value="protobuf" />
+        <option value="prototext" />
+        <option value="tsconfig" />
+      </set>
     </option>
   </component>
   <component name="Git.Settings">
@@ -67,61 +132,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0030226840372036" />
-      <entry key="MS500" value="1.3528833519368235" />
-      <entry key="S2" value="2.194323944476018" />
-      <entry key="S5" value="2.6958547346862844" />
-      <entry key="S10" value="3.4999017062894677" />
-      <entry key="S30" value="7.334856292932066" />
-      <entry key="S60" value="10.430731021558865" />
-      <entry key="M2" value="12.832978711025927" />
-      <entry key="M5" value="17.44354079349212" />
-      <entry key="M10" value="32.847792317591725" />
-      <entry key="M15" value="50.98209791405084" />
-      <entry key="M30" value="96.34405390679049" />
-      <entry key="H1" value="148.64972278352698" />
-      <entry key="H2" value="192.5840383948159" />
-      <entry key="H4" value="225.25474525745614" />
-      <entry key="D1" value="375.30841497480765" />
-      <entry key="W1" value="487.8032280812666" />
+      <entry key="MS100" value="1.0000000000000002" />
+      <entry key="MS500" value="1.0007178649103463" />
+      <entry key="S2" value="1.1636856778854456" />
+      <entry key="S5" value="1.4848465085373088" />
+      <entry key="S10" value="1.6963092046909254" />
+      <entry key="S30" value="1.8863462132506934" />
+      <entry key="S60" value="1.9504665592880555" />
+      <entry key="M2" value="2.347449691176177" />
+      <entry key="M5" value="6.243160126409209" />
+      <entry key="M10" value="18.217556494898016" />
+      <entry key="M15" value="33.85100624441787" />
+      <entry key="M30" value="78.15414553676997" />
+      <entry key="H1" value="134.1602483197945" />
+      <entry key="H2" value="183.5888213493852" />
+      <entry key="H4" value="220.73005432980978" />
+      <entry key="D1" value="375.47432860092067" />
+      <entry key="W1" value="489.46196668116045" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="3.5700778999823776E-160" />
-      <entry key="S5" value="3.3653711472985136E-64" />
-      <entry key="S10" value="3.7687331615431517E-32" />
-      <entry key="S30" value="1.1696562683695851E-10" />
-      <entry key="S60" value="3.653959159470232E-5" />
-      <entry key="M2" value="0.026736097632923256" />
-      <entry key="M5" value="1.9980883792186797" />
-      <entry key="M10" value="10.457605146373119" />
-      <entry key="M15" value="19.199216332860114" />
-      <entry key="M30" value="36.62381798643809" />
-      <entry key="H1" value="51.40830488750432" />
-      <entry key="H2" value="61.17532737714412" />
-      <entry key="H4" value="67.11552438029508" />
-      <entry key="D1" value="81.51780828499365" />
-      <entry key="W1" value="90.07768248257705" />
+      <entry key="MS100" value="5.964646426203492E-133" />
+      <entry key="MS500" value="3.590185932741943E-27" />
+      <entry key="S2" value="2.447818626689909E-7" />
+      <entry key="S5" value="0.002267314127473932" />
+      <entry key="S10" value="0.04761632206999961" />
+      <entry key="S30" value="0.3624532088824293" />
+      <entry key="S60" value="0.6020409013396187" />
+      <entry key="M2" value="0.7766987037577157" />
+      <entry key="M5" value="1.3909047305133286" />
+      <entry key="M10" value="6.115548882643472" />
+      <entry key="M15" value="12.96293666802032" />
+      <entry key="M30" value="29.932903836367515" />
+      <entry key="H1" value="46.697590419562516" />
+      <entry key="H2" value="58.678579154590786" />
+      <entry key="H4" value="66.16943025734408" />
+      <entry key="D1" value="82.1190974940279" />
+      <entry key="W1" value="91.01461596168456" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.855159100378977" />
-      <entry key="MS500" value="1.3091676204474751" />
-      <entry key="S2" value="2.176130750125958" />
-      <entry key="S5" value="2.686900522776067" />
-      <entry key="S10" value="3.494081057631208" />
-      <entry key="S30" value="7.330710622009394" />
-      <entry key="S60" value="10.427793386697783" />
-      <entry key="M2" value="12.857282007805706" />
-      <entry key="M5" value="19.42059379209292" />
-      <entry key="M10" value="43.250614441818676" />
-      <entry key="M15" value="70.11403073407644" />
-      <entry key="M30" value="132.90340023422306" />
-      <entry key="H1" value="200.0126450486554" />
-      <entry key="H2" value="253.73231701424805" />
-      <entry key="H4" value="292.35543181321356" />
-      <entry key="D1" value="456.82328939003645" />
-      <entry key="W1" value="577.8804549077029" />
+      <entry key="MS100" value="0.939522749214012" />
+      <entry key="MS500" value="0.9882933126346691" />
+      <entry key="S2" value="1.159103238564475" />
+      <entry key="S5" value="1.4839274335309232" />
+      <entry key="S10" value="1.7399535758115567" />
+      <entry key="S30" value="2.242664737123201" />
+      <entry key="S60" value="2.547621240278567" />
+      <entry key="M2" value="3.12097592673589" />
+      <entry key="M5" value="7.627499589442331" />
+      <entry key="M10" value="24.305295321624204" />
+      <entry key="M15" value="46.7713923545954" />
+      <entry key="M30" value="108.03582792969219" />
+      <entry key="H1" value="180.81735939858456" />
+      <entry key="H2" value="242.24183039058556" />
+      <entry key="H4" value="286.885043678273" />
+      <entry key="D1" value="457.59050107676086" />
+      <entry key="W1" value="580.4761265215915" />
     </decayedShown>
   </component>
   <component name="OptimizeOnSaveOptions">

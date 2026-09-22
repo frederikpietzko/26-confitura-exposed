@@ -14,7 +14,10 @@ object TaxiRideTable : LongIdTable("taxi_ride") {
     val price = compositeMoney(
         amountColumn = decimal("amount", 13, 2),
         currencyColumn = varchar("currency", 3)
-            .transform(wrap = Monetary::getCurrency, CurrencyUnit::getCurrencyCode)
+            .transform(
+                wrap = Monetary::getCurrency,
+                unwrap = CurrencyUnit::getCurrencyCode
+            )
     )
 
     val status = enumeration<RideStatus>("status").default(RideStatus.REQUESTED)

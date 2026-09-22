@@ -218,6 +218,110 @@ object TaxiTable : LongIdTable("taxi") {
   - No @ManyToOne, no fetch type, no cascade, no orphanRemoval
   - Nothing here decides how many queries run later - that decision belongs to the query
 - Call back to the N+1 slide: there is no lazy loading to be surprised by, because there is no object graph
-- Handover: now that both tables exist as values, I can use them to build queries -> SQL DSL
+- Handover: third table, and it is the one with the awkward types -> money and enums
+-->
+
+---
+class: code-slide
+---
+
+# Money is two columns, and the column type says so
+
+<DrawnAnnotation type="box" text="compositeMoney(\n        amountColumn = decimal(&quot;amount&quot;, 13, 2),\n        currencyColumn = varchar(&quot;currency&quot;, 3)\n    )" label="one `val`, two real columns" :at="1">
+
+```kotlin no-compile
+object TaxiRideTable : LongIdTable("taxi_ride") {
+    val price = compositeMoney(
+        amountColumn = decimal("amount", 13, 2),
+        currencyColumn = varchar("currency", 3)
+    )
+}
+```
+
+</DrawnAnnotation>
+
+<!--
+- exposed-money, another opt-in module - JSR 354 MonetaryAmount, the thing you actually want for prices
+- Click: one Kotlin val, two columns in the database
+  - amount is a decimal(13, 2) - I chose the precision and the scale, right here
+  - currency is a varchar(3) - the currency code, three characters, because that is what ISO gives me
+- Say it out loud: nobody ever stored money in a double on purpose, it just happened
+  - Here the type forces the pair; I cannot accidentally persist an amount without its currency
+- What not to explain twice: this is the same "columns are vals" idea, just a val that makes two of them
+- Handover: the currency column stores a string, my code wants a CurrencyUnit -> transform
+-->
+
+---
+class: code-slide
+magicMove: true
+---
+
+# A column can convert on the way in and out
+
+<DrawnAnnotation type="box" text="transform(\n                wrap = Monetary::getCurrency,\n                unwrap = CurrencyUnit::getCurrencyCode\n            )" label="`String` in the DB, `CurrencyUnit` in my code" :at="1">
+
+```kotlin no-compile
+object TaxiRideTable : LongIdTable("taxi_ride") {
+    val price = compositeMoney(
+        amountColumn = decimal("amount", 13, 2),
+        currencyColumn = varchar("currency", 3)
+            .transform(
+                wrap = Monetary::getCurrency,
+                unwrap = CurrencyUnit::getCurrencyCode
+            )
+    )
+}
+```
+
+</DrawnAnnotation>
+
+<!--
+- Click: transform takes the two functions, one each way - wrap on read, unwrap on write
+  - Two method references, nothing else; the conversion is visible on the column that needs it
+- In JPA this is an AttributeConverter in another file, registered somewhere, applying to who knows what
+  - Here the conversion belongs to this column and to no other
+- Point at the read type: price is a MonetaryAmount to my code, two boring columns to the database
+- Handover: one column left, and it is the one everybody gets wrong -> the enum
+-->
+
+---
+class: code-slide
+magicMove: true
+---
+
+# An enum column has a default, and the default is Kotlin
+
+<DrawnAnnotation type="underline" text="enumeration&lt;RideStatus&gt;(&quot;status&quot;).default(RideStatus.REQUESTED)" label="my enum, my default value" :at="1">
+
+```kotlin no-compile
+object TaxiRideTable : LongIdTable("taxi_ride") {
+    val passengerId = reference("passenger_id", PassengerTable)
+    val taxiId = reference("taxi_id", TaxiTable)
+
+    val pickupLocation = text("pickup_location")
+    val price = compositeMoney(
+        amountColumn = decimal("amount", 13, 2),
+        currencyColumn = varchar("currency", 3)
+            .transform(
+                wrap = Monetary::getCurrency,
+                unwrap = CurrencyUnit::getCurrencyCode
+            )
+    )
+
+    val status = enumeration<RideStatus>("status").default(RideStatus.REQUESTED)
+}
+```
+
+</DrawnAnnotation>
+
+<!--
+- Now the whole file the demo project compiles - references, money, enum
+- Click: enumeration of my own Kotlin enum, plus a default written as a Kotlin value
+  - default takes RideStatus.REQUESTED, not the string "REQUESTED" - the compiler checks it
+  - enumerationByName if I want the name in the column instead of the ordinal; my call, on this line
+- Ask the room: who has been bitten by an enum stored as an ordinal after someone reordered the enum?
+  - The point is not that Exposed prevents it - the point is the choice is on the line I am reading
+- Say it: every decision this table makes is on screen; there is no annotation processor completing my thoughts
+- Handover: three tables, all of them just values -> now let me use them to write queries, SQL DSL
 -->
 
