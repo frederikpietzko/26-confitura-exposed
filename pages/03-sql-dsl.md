@@ -249,8 +249,8 @@ override fun findAll(): List<TaxiRide> = TaxiRideTable
 ```sql
 SELECT taxi_ride.*, taxi.*, passenger.*
 FROM taxi_ride
-INNER JOIN taxi ON taxi.id = taxi_ride.taxi_id
-INNER JOIN passenger ON passenger.id = taxi_ride.passenger_id
+INNER JOIN taxi ON taxi_ride.taxi_id = taxi.id
+INNER JOIN passenger ON taxi_ride.passenger_id = passenger.id
 ```
 
 </DrawnAnnotation>
@@ -315,8 +315,8 @@ fun findAllByPassengerIdAndStatus(passengerId: Long, status: RideStatus) =
 ```sql
 SELECT taxi_ride.*, taxi.*, passenger.*
 FROM taxi_ride
-INNER JOIN taxi ON taxi.id = taxi_ride.taxi_id
-INNER JOIN passenger ON passenger.id = taxi_ride.passenger_id
+INNER JOIN taxi ON taxi_ride.taxi_id = taxi.id
+INNER JOIN passenger ON taxi_ride.passenger_id = passenger.id
 WHERE taxi_ride.passenger_id = ? AND taxi_ride.status = ?
 ```
 
@@ -335,25 +335,26 @@ WHERE taxi_ride.passenger_id = ? AND taxi_ride.status = ?
 class: code-slide
 ---
 
-# An aggregate is a value I name once
+# An aggregate is a value, so I reuse it
 
-<DrawnAnnotation type="box" text="val driverRideCount = TaxiRideTable.id.count().alias(&quot;driverRideCount&quot;)" label="`COUNT(...)` as a Kotlin value" :geometry="{ label: { x: 0.5, y: 0.85 } }" :on="1">
-<DrawnAnnotation type="underline" text="driverRideCount greaterEq minCount" label="filter on it" :geometry="{ label: { x: 0.5, y: 0.85 } }" :on="2">
-<DrawnAnnotation type="underline" text="orderBy(driverRideCount, SortOrder.DESC)" label="sort by it" :geometry="{ label: { x: 0.5, y: 0.85 } }" :on="3">
+<DrawnAnnotation type="box" text="val driverRideCount = rideCount.alias(&quot;driverRideCount&quot;)" label="`COUNT(...)` as a Kotlin value" :geometry="{ label: { x: 0.5, y: 0.85 } }" :on="1">
+<DrawnAnnotation type="underline" text="having { rideCount greaterEq minCount }" label="filter on it" :geometry="{ label: { x: 0.5, y: 0.85 } }" :on="2">
+<DrawnAnnotation type="underline" text="orderBy(rideCount, SortOrder.DESC)" label="sort by it" :geometry="{ label: { x: 0.5, y: 0.85 } }" :on="3">
 <DrawnAnnotation type="underline" text="it[driverRideCount]" label="read it back, typed" :geometry="{ label: { x: 0.5, y: 0.85 } }" :at="4">
 
 ```kotlin no-compile
-val driverRideCount = TaxiRideTable.id.count().alias("driverRideCount")
+val rideCount = TaxiRideTable.id.count()
+val driverRideCount = rideCount.alias("driverRideCount")
 
 fun countByDriverId(driverId: Long, minCount: Long = 0) = TaxiRideTable
     .join(TaxiTable, INNER, TaxiRideTable.taxiId, TaxiTable.id)
     .join(DriverTable, INNER, TaxiTable.driverId, DriverTable.id)
     .select(DriverTable.id, DriverTable.firstName,
             DriverTable.lastName, driverRideCount)
-    .where {
-        TaxiTable.driverId eq driverId and (driverRideCount greaterEq minCount)
-    }
-    .orderBy(driverRideCount, SortOrder.DESC)
+    .where { TaxiTable.driverId eq driverId }
+    .groupBy(DriverTable.id, DriverTable.firstName, DriverTable.lastName)
+    .having { rideCount greaterEq minCount }
+    .orderBy(rideCount, SortOrder.DESC)
     .map { DriverWithRideCount(it.toDriver(), it[driverRideCount]) }
 ```
 
@@ -365,8 +366,49 @@ fun countByDriverId(driverId: Long, minCount: Long = 0) = TaxiRideTable
 <!--
 - The complex query, and it still fits on one slide
 - Click one: the aggregate is a val - a COUNT I can pass around like any other value
-- Clicks two to four: same val in the filter, in the sort, and when reading the row back
+- The alias only exists so I can read the column back out of the row
+- Clicks two to four: the same expression in having, in the sort, and when reading the row back
 - Say it: try that with a string based query - you repeat the expression three times and hope
 - Point at the select list: I chose the columns, so I know what crosses the wire
+- Handover: one more value I can name - a whole query -> the subselect
+-->
+
+---
+class: code-slide
+---
+
+# A subselect is just another query I pass in
+
+<DrawnAnnotation type="circle" text="notInSubQuery" label="`NOT IN (SELECT ...)`" :geometry="{ label: { x: 0.5, y: 0.625 } }" :on="1">
+<DrawnAnnotation type="box" text="private fun driverIdsWithActiveRides() = TaxiRideTable" label="a query, named and reusable" :geometry="{ label: { x: 0.5, y: 0.625 } }" :at="2">
+
+```kotlin no-compile
+fun findAllWithoutActiveRides(): List<Driver> = DriverTable
+    .selectAll()
+    .where { DriverTable.id notInSubQuery driverIdsWithActiveRides() }
+    .map(ResultRow::toDriver)
+
+private fun driverIdsWithActiveRides() = TaxiRideTable
+    .join(TaxiTable, INNER, TaxiRideTable.taxiId, TaxiTable.id)
+    .select(TaxiTable.driverId)
+    .where { TaxiRideTable.status inList listOf(REQUESTED, IN_PROGRESS) }
+```
+
+```sql
+SELECT driver.id, driver.first_name, driver.last_name FROM driver
+WHERE driver.id NOT IN (
+    SELECT taxi.driver_id FROM taxi_ride
+    INNER JOIN taxi ON taxi_ride.taxi_id = taxi.id
+    WHERE taxi_ride.status IN (?, ?))
+```
+
+</DrawnAnnotation>
+</DrawnAnnotation>
+
+<!--
+- The question: which drivers are free right now - no requested, no in progress ride
+- Click one: notInSubQuery takes a query, so the nesting is an argument, not a string
+- Click two: the inner query is its own named function, typed and testable on its own
+- Say it: one statement, one round trip - no loading drivers and filtering them in Kotlin
 - Handover: that is the DSL - next, who owns the transaction -> Spring
 -->

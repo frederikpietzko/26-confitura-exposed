@@ -1,16 +1,25 @@
 package com.github.frederikpietzko.demo.taxi.repository
 
 import com.github.frederikpietzko.demo.taxi.domain.Driver
+import com.github.frederikpietzko.demo.taxi.domain.MakeAndModel
+import com.github.frederikpietzko.demo.taxi.domain.Passenger
+import com.github.frederikpietzko.demo.taxi.domain.RideStatus
+import com.github.frederikpietzko.demo.taxi.domain.Taxi
+import com.github.frederikpietzko.demo.taxi.domain.TaxiRide
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import javax.money.Monetary
+import javax.money.MonetaryAmount
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class DriverRepositoryIntegrationTest @Autowired constructor(private val drivers: DriverRepository) :
-    RepositoryIntegrationTest() {
+class DriverRepositoryIntegrationTest @Autowired constructor(
+    private val drivers: DriverRepository,
+    private val rides: TaxiRideRepository,
+) : RepositoryIntegrationTest() {
 
     @Test
     fun `create assigns a generated id and stores the driver`() {
@@ -100,4 +109,59 @@ class DriverRepositoryIntegrationTest @Autowired constructor(private val drivers
     fun `deleteById returns false for an unknown id`() {
         assertEquals(false, drivers.deleteById(4711L))
     }
+
+    @Test
+    fun `findAllWithoutActiveRides returns every driver when nobody is driving`() {
+        val ada = drivers.create(Driver(firstName = "Ada", lastName = "Lovelace"))
+        val alan = drivers.create(Driver(firstName = "Alan", lastName = "Turing"))
+
+        assertEquals(listOf(ada, alan), drivers.findAllWithoutActiveRides())
+    }
+
+    @Test
+    fun `findAllWithoutActiveRides skips drivers with a requested or in progress ride`() {
+        val requested = drivers.create(Driver(firstName = "Ada", lastName = "Lovelace"))
+        val inProgress = drivers.create(Driver(firstName = "Alan", lastName = "Turing"))
+        val free = drivers.create(Driver(firstName = "Grace", lastName = "Hopper"))
+        rides.create(aRide(driverId = requested.id!!, status = RideStatus.REQUESTED, email = "a@example.com"))
+        rides.create(aRide(driverId = inProgress.id!!, status = RideStatus.IN_PROGRESS, email = "b@example.com"))
+
+        assertEquals(listOf(free), drivers.findAllWithoutActiveRides())
+    }
+
+    @Test
+    fun `findAllWithoutActiveRides keeps drivers whose rides are all completed`() {
+        val driver = drivers.create(Driver(firstName = "Ada", lastName = "Lovelace"))
+        rides.create(aRide(driverId = driver.id!!, status = RideStatus.COMPLETED, email = "a@example.com"))
+        rides.create(aRide(driverId = driver.id, status = RideStatus.COMPLETED, email = "b@example.com"))
+
+        assertEquals(listOf(driver), drivers.findAllWithoutActiveRides())
+    }
+
+    @Test
+    fun `findAllWithoutActiveRides skips a driver with a completed and an active ride`() {
+        val driver = drivers.create(Driver(firstName = "Ada", lastName = "Lovelace"))
+        rides.create(aRide(driverId = driver.id!!, status = RideStatus.COMPLETED, email = "a@example.com"))
+        rides.create(aRide(driverId = driver.id, status = RideStatus.IN_PROGRESS, email = "b@example.com"))
+
+        assertEquals(emptyList(), drivers.findAllWithoutActiveRides())
+    }
+
+    private fun aRide(driverId: Long, status: RideStatus, email: String) = TaxiRide(
+        status = status,
+        price = euro("25.50"),
+        pickupLocation = "Warsaw Central",
+        taxi = Taxi(
+            makeAndModel = MakeAndModel(make = "Skoda", model = "Octavia"),
+            carColor = "yellow",
+            driverId = driverId,
+        ),
+        passenger = Passenger(name = "Grace Hopper", email = email),
+    )
+
+    private fun euro(amount: String): MonetaryAmount = Monetary
+        .getDefaultAmountFactory()
+        .setCurrency("EUR")
+        .setNumber(amount.toBigDecimal())
+        .create()
 }
