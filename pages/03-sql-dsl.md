@@ -46,6 +46,8 @@ class: code-slide
 
 # The row becomes my domain in code I own
 
+<DrawnAnnotation type="underline" text="firstName = this[DriverTable.firstName]," label="typesafe row mapping" :geometry="{ label: { x: 0.5, y: 0.5 } }" :at="1">
+
 ```kotlin no-compile
 private fun ResultRow.toDriver() = Driver(
     id = this[DriverTable.id],
@@ -54,9 +56,11 @@ private fun ResultRow.toDriver() = Driver(
 )
 ```
 
+</DrawnAnnotation>
+
 <!--
 - One extension function, private to the repository - that is the entire mapping layer
-- Point at the types: each column knows its type, so Driver is built type safe
+- Click: the index is the column, so each property gets its type from the table
 - No annotations, no reflection, no naming strategy deciding this for me
 - Driver stays a plain data class with vals - it never learns about the database
 - Handover: now the same query, with a condition -> findById
@@ -101,7 +105,7 @@ class: code-slide
 # Insert hands the row straight back
 
 <DrawnAnnotation type="circle" text="insertReturning" label="no second query" :geometry="{ label: { x: 0.5, y: 0.435 } }" :on="1">
-<DrawnAnnotation type="underline" text="statement[firstName] = entity.firstName" label="typesafe row mapping" :geometry="{ label: { x: 0.5, y: 0.435 } }" :at="2">
+<DrawnAnnotation type="underline" text="statement[firstName] = entity.firstName" label="typesafe statement mapping" :geometry="{ label: { x: 0.5, y: 0.435 } }" :at="2">
 
 ```kotlin no-compile
 override fun create(entity: Driver): Driver = DriverTable
@@ -135,7 +139,7 @@ class: code-slide
 # An update is a statement I wrote, not a side effect
 
 <DrawnAnnotation type="circle" text=".update(" label="never dirty checking" :geometry="{ label: { x: 0.5, y: 0.52 } }" :on="1">
-<DrawnAnnotation type="box" text="where = { DriverTable.id eq entity.id }" label="I decide which rows" :geometry="{ label: { x: 0.5, y: 0.52 } }" :at="2">
+<DrawnAnnotation type="box" text="where = { DriverTable.id eq entity.id }" label="where clause for update" :geometry="{ label: { x: 0.5, y: 0.52 } }" :at="2">
 
 ```kotlin no-compile
 override fun update(entity: Driver): Driver {
@@ -207,7 +211,7 @@ class: code-slide
 
 # Delete tells me how many rows it hit
 
-<DrawnAnnotation type="underline" text="deleteWhere { id eq entity.id } > 0" label="a row count, not a void" :geometry="{ label: { x: 0.5, y: 0.4 } }" :at="1">
+<DrawnAnnotation type="underline" text="deleteWhere { id eq entity.id } > 0" label="returns row count" :geometry="{ label: { x: 0.5, y: 0.4 } }" :at="1">
 
 ```kotlin no-compile
 override fun delete(entity: Driver): Boolean {
@@ -235,8 +239,7 @@ class: code-slide
 
 # A join is written, not configured
 
-<DrawnAnnotation type="underline" text=".join(TaxiTable, INNER, TaxiRideTable.taxiId, TaxiTable.id)" label="the join lives in the query" :geometry="{ label: { x: 0.5, y: 0.45 } }" :on="1">
-<DrawnAnnotation type="underline" text=".join(PassengerTable, INNER, TaxiRideTable.passengerId, PassengerTable.id)" label="no mapping decides this for me" :geometry="{ label: { x: 0.5, y: 0.45 } }" :at="2">
+<DrawnAnnotation type="underline" text=".join(TaxiTable, INNER, TaxiRideTable.taxiId, TaxiTable.id)" label="type safe join" :geometry="{ label: { x: 0.5, y: 0.45 } }" :at="1">
 
 ```kotlin no-compile
 override fun findAll(): List<TaxiRide> = TaxiRideTable
@@ -254,11 +257,10 @@ INNER JOIN passenger ON taxi_ride.passenger_id = passenger.id
 ```
 
 </DrawnAnnotation>
-</DrawnAnnotation>
 
 <!--
 - A ride needs its taxi and its passenger, so this is one statement with two joins
-- Click one and two: both joins are arguments, columns on both sides, checked by the compiler
+- Click: the join is an argument, columns on both sides, checked by the compiler
 - No FetchType, no entity graph, no annotation somewhere else deciding this
 - Say it: three tables, one query - the N+1 from section one cannot happen here
 - Handover: I do not want to retype this join -> pull it out
@@ -270,8 +272,7 @@ class: code-slide
 
 # The join is a value I can hand around
 
-<DrawnAnnotation type="box" text="private fun taxiRides(): Query" label="a `Query` is just a value" :geometry="{ label: { x: 0.5, y: 0.52 } }" :on="1">
-<DrawnAnnotation type="circle" text="taxiRides()" occurrence="2" label="every read starts here" :geometry="{ label: { x: 0.5, y: 0.52 } }" :at="2">
+<DrawnAnnotation type="box" text="private fun taxiRides(): Query" label="lazily evaluated query composition" :geometry="{ label: { x: 0.5, y: 0.52 } }" :at="1">
 
 ```kotlin no-compile
 private fun taxiRides(): Query = TaxiRideTable
@@ -283,12 +284,11 @@ override fun findAll(): List<TaxiRide> = taxiRides().map(ResultRow::toTaxiRide)
 ```
 
 </DrawnAnnotation>
-</DrawnAnnotation>
 
 <!--
-- Click one: a query is a normal Kotlin value, so I can name it and return it
-- Nothing runs yet - it runs when I iterate it
-- Click two: findAll is now one line, and the join is defined in exactly one place
+- Click: a query is a normal Kotlin value, so I can name it and return it - nothing runs yet
+- It runs when I iterate it, so composing is free
+- findAll is now one line, and the join is defined in exactly one place
 - Say it: this is reuse by function, not by inheritance or by a named query string
 - Handover: and every other read builds on the same value -> filtering
 -->
