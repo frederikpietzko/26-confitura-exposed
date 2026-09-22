@@ -3,7 +3,7 @@ package com.github.frederikpietzko.demo.taxi.tables
 import org.jetbrains.exposed.v1.core.Table
 
 object DriverTable : Table("driver") {
-    val id = long("id").autoIncrement().entityId()
+    val id = long("id").autoIncrement()
     override val primaryKey = PrimaryKey(id)
 
     val firstName = varchar("first_name", 50)

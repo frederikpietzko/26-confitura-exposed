@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.spring)
     alias(libs.plugins.kotlin.power.assert)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.exposed.plugin)
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.dependency.management)
     alias(libs.plugins.detekt)
@@ -19,6 +20,7 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-flyway")
     implementation("org.springframework.boot:spring-boot-starter-kotlinx-serialization-json")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation(libs.exposed.spring.boot4.starter)
@@ -31,6 +33,16 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     detektPlugins(libs.detekt.ktlint.wrapper)
+}
+
+exposed {
+    migrations {
+        tablesPackage.set("com.github.frederikpietzko.demo.taxi.tables")
+        databaseUrl.set("jdbc:h2:mem:migrations;DB_CLOSE_DELAY=-1")
+        databaseUser.set("sa")
+        databasePassword.set("")
+        fileDirectory.set(layout.projectDirectory.dir("src/main/resources/db/migration"))
+    }
 }
 
 kotlin {
