@@ -410,5 +410,5 @@ WHERE driver.id NOT IN (
 - Click one: notInSubQuery takes a query, so the nesting is an argument, not a string
 - Click two: the inner query is its own named function, typed and testable on its own
 - Say it: one statement, one round trip - no loading drivers and filtering them in Kotlin
-- Handover: that is the DSL - next, who owns the transaction -> Spring
+- Handover: that is the DSL - short detour, the same tables as objects -> DAO
 -->

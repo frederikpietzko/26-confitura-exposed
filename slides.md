@@ -36,9 +36,10 @@ class: agenda
 1. My subjective problems with JPA
 2. What is Exposed?
 3. SQL DSL
-4. Exposed in Spring Boot
-5. Schemas & Migrations
-6. Future Plans
+4. DAO
+5. Exposed in Spring Boot
+6. Schemas & Migrations
+7. Future Plans
 
 ---
 src: ./pages/01-jpa-problems.md
@@ -53,13 +54,17 @@ src: ./pages/03-sql-dsl.md
 ---
 
 ---
-src: ./pages/04-exposed-in-spring.md
+src: ./pages/04-dao.md
 ---
 
 ---
-src: ./pages/05-schemas-and-migrations.md
+src: ./pages/05-exposed-in-spring.md
 ---
 
 ---
-src: ./pages/06-future-plans.md
+src: ./pages/06-schemas-and-migrations.md
+---
+
+---
+src: ./pages/07-future-plans.md
 ---
