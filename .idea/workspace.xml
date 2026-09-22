@@ -6,15 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91d706af-540e-430c-82e5-a5ceefae470b" name="Changes" comment="progress">
-      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/dto/CreateDriverDto.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/service/DriverService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/service/TaxiService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/03-sql-dsl.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/03-sql-dsl.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/04-exposed-in-spring.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/05-exposed-in-spring.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/05-schemas-and-migrations.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/06-schemas-and-migrations.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/06-future-plans.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/07-future-plans.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slides.md" beforeDir="false" afterPath="$PROJECT_DIR$/slides.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/05-exposed-in-spring.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/05-exposed-in-spring.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
