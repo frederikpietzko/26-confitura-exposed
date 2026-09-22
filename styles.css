@@ -106,6 +106,34 @@ html.dark {
     transform: translateY(1rem);
 }
 
+/* Diagram slides (`class: bridge-slide`): the headline is a full sentence and
+   the diagram below it needs the vertical space, so the title is a touch
+   smaller than a code slide's and sits tighter above its content. */
+.bridge-slide h1 {
+    font-size: 2.1rem !important;
+    line-height: 1.2;
+    max-width: none;
+    text-wrap: balance;
+    margin-bottom: 0.25rem;
+}
+
+/* Module slides (`class: module-slide`): a full-sentence headline over a
+   <ModuleList>. Same treatment as the diagram slide - the title is a
+   statement, so it is smaller than a section opener and sits tight above the
+   list. The list's own size is a variable so a longer list can shrink
+   per slide without touching the component. */
+.module-slide h1 {
+    font-size: 2.1rem !important;
+    line-height: 1.2;
+    max-width: none;
+    text-wrap: balance;
+    margin-bottom: 0.25rem;
+}
+
+.module-slide {
+    --module-list-font-size: 1.8rem;
+}
+
 /* Agenda slide: the ordered list becomes a numbered index — two-digit
    gradient numerals with a hairline rule between the entries. */
 .agenda {
