@@ -1,0 +1,11 @@
+services:
+  # the demo needs a real Postgres: Exposed only implements `RETURNING` for
+  # Postgres, SQLite and MariaDB - the repositories rely on it
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: demo
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo
+    ports:
+      - "5432:5432"

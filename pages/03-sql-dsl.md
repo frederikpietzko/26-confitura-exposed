@@ -4,3 +4,6 @@ class: section-intro
 ---
 
 # SQL DSL
+
+---
+

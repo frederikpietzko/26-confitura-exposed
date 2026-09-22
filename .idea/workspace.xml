@@ -6,9 +6,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91d706af-540e-430c-82e5-a5ceefae470b" name="Changes" comment="progress">
+      <change afterPath="$PROJECT_DIR$/.idea/detekt.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Passenger.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/BaseRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/DriverRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/repository/TaxiRideRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/TaxiRide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/TaxiRide.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/02-what-is-exposed.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/02-what-is-exposed.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/demo/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/gradle/libs.versions.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Driver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Driver.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Taxi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Taxi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/TaxiRide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/TaxiRide.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/db/migration/V20260922103614__INITIAL_SCHEMA.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/03-sql-dsl.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/03-sql-dsl.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +56,9 @@
       <list>
         <option value="Kotlin Object" />
         <option value="Kotlin File" />
+        <option value="Kotlin Interface" />
         <option value="Kotlin Data Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -132,61 +145,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000000000002" />
-      <entry key="MS500" value="1.0007178649103463" />
-      <entry key="S2" value="1.1636856778854456" />
-      <entry key="S5" value="1.4848465085373088" />
-      <entry key="S10" value="1.6963092046909254" />
-      <entry key="S30" value="1.8863462132506934" />
-      <entry key="S60" value="1.9504665592880555" />
-      <entry key="M2" value="2.347449691176177" />
-      <entry key="M5" value="6.243160126409209" />
-      <entry key="M10" value="18.217556494898016" />
-      <entry key="M15" value="33.85100624441787" />
-      <entry key="M30" value="78.15414553676997" />
-      <entry key="H1" value="134.1602483197945" />
-      <entry key="H2" value="183.5888213493852" />
-      <entry key="H4" value="220.73005432980978" />
-      <entry key="D1" value="375.47432860092067" />
-      <entry key="W1" value="489.46196668116045" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000107304233874" />
+      <entry key="S5" value="1.01428019401929" />
+      <entry key="S10" value="1.1899633016299151" />
+      <entry key="S30" value="3.1587129960000153" />
+      <entry key="S60" value="7.561321831594034" />
+      <entry key="M2" value="17.074200307939165" />
+      <entry key="M5" value="42.10474201822303" />
+      <entry key="M10" value="77.26581718828966" />
+      <entry key="M15" value="106.45589613520073" />
+      <entry key="M30" value="169.50443931513772" />
+      <entry key="H1" value="249.4681129829993" />
+      <entry key="H2" value="345.75434645841653" />
+      <entry key="H4" value="437.49218827833573" />
+      <entry key="D1" value="667.526934820288" />
+      <entry key="W1" value="806.7729596645501" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="5.964646426203492E-133" />
-      <entry key="MS500" value="3.590185932741943E-27" />
-      <entry key="S2" value="2.447818626689909E-7" />
-      <entry key="S5" value="0.002267314127473932" />
-      <entry key="S10" value="0.04761632206999961" />
-      <entry key="S30" value="0.3624532088824293" />
-      <entry key="S60" value="0.6020409013396187" />
-      <entry key="M2" value="0.7766987037577157" />
-      <entry key="M5" value="1.3909047305133286" />
-      <entry key="M10" value="6.115548882643472" />
-      <entry key="M15" value="12.96293666802032" />
-      <entry key="M30" value="29.932903836367515" />
-      <entry key="H1" value="46.697590419562516" />
-      <entry key="H2" value="58.678579154590786" />
-      <entry key="H4" value="66.16943025734408" />
-      <entry key="D1" value="82.1190974940279" />
-      <entry key="W1" value="91.01461596168456" />
+      <entry key="MS100" value="2.6124886313558667E-8" />
+      <entry key="MS500" value="0.030437633391976273" />
+      <entry key="S2" value="0.4176935937786412" />
+      <entry key="S5" value="0.7127692845491036" />
+      <entry key="S10" value="0.929690579888267" />
+      <entry key="S30" value="1.9232119567070325" />
+      <entry key="S60" value="4.798618505073679" />
+      <entry key="M2" value="11.459102062794566" />
+      <entry key="M5" value="28.046196703086544" />
+      <entry key="M10" value="52.80794564364053" />
+      <entry key="M15" value="75.0235388782024" />
+      <entry key="M30" value="123.85080368747475" />
+      <entry key="H1" value="177.74156544077084" />
+      <entry key="H2" value="227.98160260469092" />
+      <entry key="H4" value="266.6998212683777" />
+      <entry key="D1" value="319.3461654025455" />
+      <entry key="W1" value="336.4984025969256" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.939522749214012" />
-      <entry key="MS500" value="0.9882933126346691" />
-      <entry key="S2" value="1.159103238564475" />
-      <entry key="S5" value="1.4839274335309232" />
-      <entry key="S10" value="1.7399535758115567" />
-      <entry key="S30" value="2.242664737123201" />
-      <entry key="S60" value="2.547621240278567" />
-      <entry key="M2" value="3.12097592673589" />
-      <entry key="M5" value="7.627499589442331" />
-      <entry key="M10" value="24.305295321624204" />
-      <entry key="M15" value="46.7713923545954" />
-      <entry key="M30" value="108.03582792969219" />
-      <entry key="H1" value="180.81735939858456" />
-      <entry key="H2" value="242.24183039058556" />
-      <entry key="H4" value="286.885043678273" />
-      <entry key="D1" value="457.59050107676086" />
-      <entry key="W1" value="580.4761265215915" />
+      <entry key="MS100" value="0.06163954408667148" />
+      <entry key="MS500" value="0.5816588191244263" />
+      <entry key="S2" value="1.1771027266206457" />
+      <entry key="S5" value="1.5867176209065477" />
+      <entry key="S10" value="2.013770003745472" />
+      <entry key="S30" value="4.966657407566001" />
+      <entry key="S60" value="12.203593325774985" />
+      <entry key="M2" value="28.339316073258402" />
+      <entry key="M5" value="69.95374912130518" />
+      <entry key="M10" value="129.88761266727323" />
+      <entry key="M15" value="181.30392699753844" />
+      <entry key="M30" value="293.21132182516936" />
+      <entry key="H1" value="427.10510170593744" />
+      <entry key="H2" value="573.6670132429717" />
+      <entry key="H4" value="704.150703816488" />
+      <entry key="D1" value="986.8646147527727" />
+      <entry key="W1" value="1143.2700760393504" />
     </decayedShown>
   </component>
   <component name="OptimizeOnSaveOptions">
@@ -215,6 +228,7 @@
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
@@ -228,7 +242,7 @@
     &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.detekt&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/frederik.pietzko/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;
   }

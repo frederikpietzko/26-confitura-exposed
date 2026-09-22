@@ -27,9 +27,14 @@ dependencies {
     implementation(libs.exposed.json)
     implementation(libs.exposed.money)
 
-    runtimeOnly("com.h2database:h2")
+    runtimeOnly("org.postgresql:postgresql")
+    runtimeOnly("org.flywaydb:flyway-database-postgresql")
+    runtimeOnly(libs.moneta)
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-testcontainers")
+    testImplementation("org.testcontainers:testcontainers-postgresql")
+    testImplementation(kotlin("test"))
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     detektPlugins(libs.detekt.ktlint.wrapper)
@@ -38,9 +43,9 @@ dependencies {
 exposed {
     migrations {
         tablesPackage.set("com.github.frederikpietzko.demo.taxi.tables")
-        databaseUrl.set("jdbc:h2:mem:migrations;DB_CLOSE_DELAY=-1")
-        databaseUser.set("sa")
-        databasePassword.set("")
+        // the plugin spins up a throwaway Postgres, replays the committed migrations with Flyway
+        // and diffs the table objects against the result
+        testContainersImageName.set("postgres:18-alpine")
         fileDirectory.set(layout.projectDirectory.dir("src/main/resources/db/migration"))
     }
 }

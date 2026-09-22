@@ -5,12 +5,14 @@ springBoot = "4.1.1"
 springDependencyManagement = "1.1.7"
 exposed = "1.5.0"
 detekt = "2.0.0-alpha.6"
+moneta = "1.4.5"
 
 [libraries]
 exposed-spring-boot4-starter = { module = "org.jetbrains.exposed:exposed-spring-boot4-starter", version.ref = "exposed" }
 exposed-json = { module = "org.jetbrains.exposed:exposed-json", version.ref = "exposed" }
 exposed-money = { module = "org.jetbrains.exposed:exposed-money", version.ref = "exposed" }
 detekt-ktlint-wrapper = { module = "dev.detekt:detekt-rules-ktlint-wrapper", version.ref = "detekt" }
+moneta = { module = "org.javamoney:moneta", version.ref = "moneta" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
