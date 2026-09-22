@@ -78,7 +78,8 @@ object DriverTable : Table("driver")
 -->
 
 ---
-class: code-slide magicMove: true
+class: code-slide
+magicMove: true
 ---
 
 # The primary key is an override, not an annotation
@@ -105,7 +106,8 @@ object DriverTable : Table("driver") {
 -->
 
 ---
-class: code-slide magicMove: true
+class: code-slide
+magicMove: true
 ---
 
 # A column carries its SQL type and its length
@@ -132,6 +134,90 @@ object DriverTable : Table("driver") {
 - Point at the types: firstName is a Column<String>, id is a Column<Long>
   - The table object is a value I can pass around, not a mapping the framework reads
 - Ask the room: who has ever been surprised by the DDL their entities generated?
-- Handover: now that the table exists as a value, I can use it to build queries -> SQL DSL
+- Handover: writing the id by hand gets old -> the second table picks a base class
+-->
+
+---
+class: code-slide
+---
+
+# Pick a base class and the id comes with it
+
+<DrawnAnnotation type="circle" text="LongIdTable(&quot;taxi&quot;)" label="id and primary key included" :at="1">
+
+```kotlin no-compile
+object TaxiTable : LongIdTable("taxi")
+```
+
+</DrawnAnnotation>
+
+<!--
+- Second table of the demo project, same build-up, three steps
+- Click: LongIdTable is Table plus an auto incrementing Long id and its primary key
+  - UUIDTable, IntIdTable, the same idea with another id type
+  - Still a choice I make by picking a supertype, not magic a provider applies to me
+- Say it: the boilerplate I wrote on the driver table is a base class, nothing more
+- Handover: now the column this table is actually interesting for -> JSON
+-->
+
+---
+class: code-slide
+magicMove: true
+---
+
+# A JSON column is just another column type
+
+<DrawnAnnotation type="underline" text="json&lt;MakeAndModel&gt;(&quot;make_and_model&quot;, format)" label="the serializer is an argument, not a config file" :at="1">
+
+```kotlin no-compile
+val format = Json { prettyPrint = true }
+
+object TaxiTable : LongIdTable("taxi") {
+    val makeAndModel = json<MakeAndModel>("make_and_model", format)
+}
+```
+
+</DrawnAnnotation>
+
+<!--
+- exposed-json is one of those opt-in modules from two slides ago
+- Click: the column type is json, the Kotlin type is my own data class
+  - Here it is kotlinx.serialization, and the Json instance is handed to the column
+  - Jackson works just as well - the module takes a serializer, it does not pick one for me
+- Point at it: I can see which serializer this column uses by reading the column
+  - No @Type, no @Converter registered somewhere else in the project
+- Handover: one column left, and it points at the other table -> the reference
+-->
+
+---
+class: code-slide
+magicMove: true
+---
+
+# A foreign key points at a column, not at an object
+
+<DrawnAnnotation type="box" text="long(&quot;driver_id&quot;).references(DriverTable.id)" label="a foreign key, and nothing else" :at="1">
+
+```kotlin no-compile
+val format = Json { prettyPrint = true }
+
+object TaxiTable : LongIdTable("taxi") {
+    val makeAndModel = json<MakeAndModel>("make_and_model", format)
+    val carColor = varchar("car_color", 50)
+    val driverId = long("driver_id").references(DriverTable.id)
+}
+```
+
+</DrawnAnnotation>
+
+<!--
+- This is the file the demo project compiles, in full
+- Click: driverId is a Long column with a foreign key to DriverTable.id
+  - The types have to line up, and the compiler checks that for me
+- Say it out loud: this is a reference, not a relationship
+  - No @ManyToOne, no fetch type, no cascade, no orphanRemoval
+  - Nothing here decides how many queries run later - that decision belongs to the query
+- Call back to the N+1 slide: there is no lazy loading to be surprised by, because there is no object graph
+- Handover: now that both tables exist as values, I can use them to build queries -> SQL DSL
 -->
 
