@@ -21,7 +21,8 @@ Package: `slidev-theme-kotlin` · Repo: <https://github.com/nomisRev/slidev-them
   inline debugger value, or compiler error
 - Placing or configuring the Kodee mascot
 - Making the deck crawlable (handout, `llms.txt`) or countable (GoatCounter)
-- Compiling the deck's snippets in a Gradle module
+- Compiling the deck's snippets in a Gradle module, or quoting a local Gradle
+  project's Kotlin files on the slides
 
 This skill covers the **theme**. For base Slidev syntax (`v-click`, transitions,
 export, headmatter), use the `slidev` skill.
@@ -57,6 +58,7 @@ pnpm run dev
 | Keep imports visible | ``show-imports`` in the fence meta |
 | Hide setup code | put `// Example` where the example starts |
 | Don't compile this fence | ``no-compile`` in the fence meta |
+| Quote a file from the Gradle demo project | `<<< @/demo/src/main/kotlin/demo/Talks.kt#talks` |
 | Morph code into the next slide | `magic-move` as the slide separator body |
 | Hand-drawn mark | `<DrawnAnnotation type="circle" text="fun main" label="…" :on="1">` |
 | Compiler error squiggle | `<InlineCompilerError text="x" message="Unresolved reference: x">` |
@@ -78,6 +80,7 @@ pnpm run dev
 | `InlineCompilerError`, `SmartCast`, `Warning`, `TypeHint`, `InlineValue` | [code-decorations](references/code-decorations.md) |
 | The development-only visual annotation editor | [annotation-editor](references/annotation-editor.md) |
 | `slidev-kotlin-snippets`: compilable snippet files | [snippets-cli](references/snippets-cli.md) |
+| A local Kotlin Gradle project as the source of truth (`<<<` imports) | [gradle-snippet-imports](references/gradle-snippet-imports.md) |
 | Handout, `llms.txt`, sitemap, analytics, hash-mode links | [static-content](references/static-content.md) |
 | Full `themeConfig` reference, fonts, IntelliJ formatting guard | [theme-config](references/theme-config.md) |
 

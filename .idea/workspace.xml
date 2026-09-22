@@ -5,11 +5,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="91d706af-540e-430c-82e5-a5ceefae470b" name="Changes" comment="scaffolding &amp; jpa slides">
+    <list default="true" id="91d706af-540e-430c-82e5-a5ceefae470b" name="Changes" comment="progress">
+      <change afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Driver.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/Taxi.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/domain/TaxiRide.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/Driver.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/Passenger.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/Taxi.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/TaxiRide.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.agents/skills/slidev-theme-kotlin/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/slidev-theme-kotlin/SKILL.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Counter.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/02-what-is-exposed.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/02-what-is-exposed.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +24,43 @@
   </component>
   <component name="EmbeddingIndexingInfo">
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/demo">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="demo" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Object" />
+        <option value="Kotlin File" />
+        <option value="Kotlin Data Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myAllFileTypesSelected" value="true" />
+    <option name="mySelectedFileTypes">
+      <set />
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,62 +75,68 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0001382914899042" />
-      <entry key="MS500" value="1.1691060379829092" />
-      <entry key="S2" value="1.6647682721359582" />
-      <entry key="S5" value="2.538992913335279" />
-      <entry key="S10" value="4.427266543396381" />
-      <entry key="S30" value="9.059360590557324" />
-      <entry key="S60" value="12.866665630176106" />
-      <entry key="M2" value="18.69461680115685" />
-      <entry key="M5" value="32.491869906781986" />
-      <entry key="M10" value="45.56597216490696" />
-      <entry key="M15" value="53.603974829894526" />
-      <entry key="M30" value="66.22628662650169" />
-      <entry key="H1" value="75.52599260787512" />
-      <entry key="H2" value="81.36689750631322" />
-      <entry key="H4" value="88.8055219842016" />
-      <entry key="D1" value="216.28140659520548" />
-      <entry key="W1" value="319.9790747241119" />
+      <entry key="MS100" value="1.2741559646879534E-62" />
+      <entry key="MS500" value="4.2276010570291526E-13" />
+      <entry key="S2" value="0.0010715072946987135" />
+      <entry key="S5" value="0.10443759311479181" />
+      <entry key="S10" value="0.5907950913097985" />
+      <entry key="S30" value="3.3028334040190197" />
+      <entry key="S60" value="7.420840651653658" />
+      <entry key="M2" value="14.20028350328437" />
+      <entry key="M5" value="32.976272235859724" />
+      <entry key="M10" value="59.865544669466345" />
+      <entry key="M15" value="80.31637452809689" />
+      <entry key="M30" value="121.27396839813899" />
+      <entry key="H1" value="162.8753889734338" />
+      <entry key="H2" value="195.64844253905645" />
+      <entry key="H4" value="220.25513953598468" />
+      <entry key="D1" value="362.3859873600904" />
+      <entry key="W1" value="472.3781926827235" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="0.0" />
-      <entry key="S60" value="0.0" />
-      <entry key="M2" value="2.6728329133569758E-194" />
-      <entry key="M5" value="4.5028811110172775E-78" />
-      <entry key="M10" value="4.143790755758873E-39" />
-      <entry key="M15" value="5.462279943851438E-26" />
-      <entry key="M30" value="9.0473626508293E-13" />
-      <entry key="H1" value="3.987007501818659E-6" />
-      <entry key="H2" value="0.008573029369379035" />
-      <entry key="H4" value="0.4014951241203318" />
-      <entry key="D1" value="9.98112885999509" />
-      <entry key="W1" value="17.330196770569117" />
+      <entry key="MS100" value="1.0001599603853322" />
+      <entry key="MS500" value="1.1861416087680725" />
+      <entry key="S2" value="1.9820046848035537" />
+      <entry key="S5" value="2.65952306197934" />
+      <entry key="S10" value="3.3502775402073897" />
+      <entry key="S30" value="5.220194902338147" />
+      <entry key="S60" value="7.719300038957776" />
+      <entry key="M2" value="12.288677160016405" />
+      <entry key="M5" value="23.204784553724075" />
+      <entry key="M10" value="35.63802787453109" />
+      <entry key="M15" value="43.47815612382166" />
+      <entry key="M30" value="55.11342802359059" />
+      <entry key="H1" value="63.06380748244183" />
+      <entry key="H2" value="67.75631120658724" />
+      <entry key="H4" value="70.6333352365297" />
+      <entry key="D1" value="82.21485254939587" />
+      <entry key="W1" value="90.1873154012856" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9727894573141258" />
-      <entry key="MS500" value="1.1626410787826293" />
-      <entry key="S2" value="1.6624602160616866" />
-      <entry key="S5" value="2.537570686315683" />
-      <entry key="S10" value="4.425993304658684" />
-      <entry key="S30" value="9.05792403930107" />
-      <entry key="S60" value="12.865161469856838" />
-      <entry key="M2" value="18.693390167271478" />
-      <entry key="M5" value="32.491127906036596" />
-      <entry key="M10" value="45.5655158777742" />
-      <entry key="M15" value="53.60363989748124" />
-      <entry key="M30" value="66.22609646311248" />
-      <entry key="H1" value="75.52589343639029" />
-      <entry key="H2" value="81.37541339823456" />
-      <entry key="H4" value="89.20691848094822" />
-      <entry key="D1" value="226.26224051422932" />
-      <entry key="W1" value="337.3091989444954" />
+      <entry key="MS100" value="9.767419393953574E-4" />
+      <entry key="MS500" value="0.2948741778839456" />
+      <entry key="S2" value="1.2766380888978601" />
+      <entry key="S5" value="2.244562111133923" />
+      <entry key="S10" value="3.542283484039711" />
+      <entry key="S30" value="8.214118441146452" />
+      <entry key="S60" value="14.848941729943604" />
+      <entry key="M2" value="26.21283957383438" />
+      <entry key="M5" value="55.946494896779924" />
+      <entry key="M10" value="95.3183751055849" />
+      <entry key="M15" value="123.64283456319106" />
+      <entry key="M30" value="176.290603165557" />
+      <entry key="H1" value="225.88361776964317" />
+      <entry key="H2" value="263.37483746791946" />
+      <entry key="H4" value="290.8728793567556" />
+      <entry key="D1" value="444.59788417194255" />
+      <entry key="W1" value="562.5650523299645" />
     </decayedShown>
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myAllFileTypesSelected" value="true" />
+    <option name="mySelectedFileTypes">
+      <set />
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7,
@@ -122,15 +171,31 @@
     &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/frederik.pietzko/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
+      <recent name="com.github.frederikpietzko.demo.taxi.tables" />
+      <recent name="com.github.frederikpietzko.demo.taxi.domain" />
+      <recent name="com.github.frederikpietzko.demo.taxi." />
+      <recent name="com.github.frederikpietzko.demo.taxi" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="AppleRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" IS_LOCATION_SIMULATION_SUPPORTED="false" IS_LOCATION_SIMULATION_ALLOWED="true" APPLICATION_LANGUAGE="IDELaunchSchemeLanguageUseSystemLanguage" APPLICATION_REGION="" DEVELOPMENT_TEAM="" MAKE_ACTIVE="TRUE" SHOULD_DEBUG_EXTENSIONS="false">
       <embedded_app_extension_list />
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="demo.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.github.frederikpietzko.demo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -167,6 +232,11 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="fix line height" />
     <MESSAGE value="scaffolding &amp; jpa slides" />
-    <option name="LAST_COMMIT_MESSAGE" value="scaffolding &amp; jpa slides" />
+    <MESSAGE value="progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="progress" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
