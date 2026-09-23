@@ -8,7 +8,8 @@ class: section-intro
 ## Why do we pretend that Databases store objects?
 
 <!--
-- Frame it first: this is subjective, and I use JPA myself
+- this is subjective, and I use JPA myself
+- forces way of thinking about persistence layer that doesn't come naturally
 - Promise: ~5 minutes of "why", then the rest of the hour on an alternative
 -->
 
@@ -37,13 +38,15 @@ connection.prepareStatement(sql).use { stmt ->
 - This is the problem ORMs were born to solve - and it was a real problem
 - Three pain points, say them, don't show them:
   - ResultSet plumbing repeated for every single query
-  - No identity: load the same row twice, get two unrelated objects
-  - Every dialect its own SQL; every table change is a shotgun edit
-- Drop the term once: object-relational impedance mismatch
+  - no typesafety: if my schema changes, I need to grep for strings and hope for good tests
+  - sql dialects not portable
+
+- object-relational impedance mismatch
   - Objects are identity, references, behaviour
   - Relations are tuples and set operations
   - Neither is wrong, they just slice the world differently
-- Timeline, spoken not shown:
+
+- Timeline:
   - 2001 Gavin King writes Hibernate, frustrated with EJB2 Entity Beans
   - He joins the EJB3 expert group
   - 2006 JPA standardises Hibernate
@@ -62,6 +65,7 @@ val customer = em.find(Customer::class.java, id)
 
 <!--
 - Same job, one line - this is why JPA won, and it deserves the credit
+
 - ORMs never claimed SQL is bad; they gave us real wins:
   - Mapping without boilerplate
   - Identity map
@@ -95,11 +99,14 @@ fun topCustomersPerRegion(since: Instant): List<Array<Any>>
 ```
 
 <!--
-- Where it stops helping: reporting, window functions, CTEs, bulk updates, upserts, partial projections
+- the other 20%
+- complex queries for reporting, upserts, partial projections
 - The moment the query becomes the interesting part, the ORM steps aside
 - Punchline, say it out loud: the escape hatch proves the abstraction has a limit - and you still pay
   the full price of the abstraction around it
 - Point at the return type: List<Array<Any>> - all type safety gone, at the worst possible moment
+- jpql & jpa projections can help
+- but queries are still not typesafe -> making refactoring hard
 -->
 
 ---
@@ -128,10 +135,8 @@ class Customer(
 - Point at the code, one item at a time, don't read a list:
   - var everywhere, no-arg constructor, no data class, no val - mutability is required
   - allopen + noarg compiler plugins exist so Kotlin can pretend to be Java for Hibernate
-  - equals/hashCode on an entity: the classic trap, id is null until flush
   - The domain model is now a mapping file that happens to have behaviour
 - FetchType.LAZY: one word here decides how many queries run somewhere else entirely
-  - Set up the next slide with it, don't explain N+1 yet
 - @JoinTable: entities are not tables
   - Two fields in Kotlin, three tables in the database
   - The mapping is a translation layer, and I have to hold both models in my head
@@ -167,40 +172,47 @@ select * from orders where customer_id = 3
 </v-click>
 
 <!--
-- Show the three lines first, let them look innocent - then click to reveal the log
-- Only query log of the talk - do not explain N+1 twice
-- The point is not "N+1 exists", everyone knows that
-- The point: nothing at the call site tells you
-  - Behaviour lives in annotations, fetch strategy, session state, transaction boundaries
-  - Everywhere except the line you are reading
-- Other side of the same coin: LazyInitializationException
-  - The type says List<Order>, the truth depends on a transaction that already closed
-- One sentence to nail it: the type system tells you what you have, JPA decides when it is there
+- nothing at the call site tells you how your query works
+- query behaviour lives in annotations, fetch strategy, session state, transaction boundaries
+- there isn't even any code you or an LLM can read
+- this is a n+1 problem & this might run fast locally or in QA
+    - and pass Code Review
+    - but fails in production
+- Devs & LLMs will write this, I call it "Tutorial JPA"
+    - it's not even because they are dumb
+    - the semantics are correct
+    - but this is what everyone trained on (Devs & LLMs alike)
+
 -->
 
 ---
-class: code-slide
----
 
-# Which PR adds an N+1?
+# What is the alternative?
 
-```kotlin no-compile
-// A
-fun report(): List<Row> =
-    repo.findAll().map { Row(it.name, it.orders.size) }
+## What I want is something that:
 
-// B
-fun report(): List<Row> =
-    repo.findAllWithOrders().map { Row(it.name, it.orders.size) }
-```
+- fit's my mental model
+- is easy for llms to generate (and debug) when provided with a skill
+- I can review easily
+- is typesafe
 
 <!--
-- State it as a hypothesis: agents - and juniors - are bad at JPA, for the same reason
-  - Not because they are dumb, but because the semantics are not in the code they read
-  - The diff looks identical
-- An LLM pattern-matches to the canonical tutorial shape: entity, @OneToMany, repository, for-loop
-  - That shape is exactly the one that falls over in production
-- Honesty beat: agents write very good tutorial JPA - that is the trap
-- Ask the room: would you let an agent review this PR?
-- Hand over: so what would I rather read? -> what is Exposed?
+- I want something that
+- fits my mental model
+    - I like simple things & KISS
+    - I like databases & SQL
+    - I don't want to hide it and abstract it away
+    - I also lean into Hexagonal Architecture often
+    - So clean domain models & Ports for persistence
+- is easy for llms to generate
+    - LLMs should be able to write this
+    - correctly, if the syntax is wrong or types don't match I want a deterministic tool to give it feedback
+    - and this should be achievable using a simple SKILL
+- easy review
+    - I wan't to know what the sql looks like
+    - so that I can give my agents or collegues feedback when they write slow queries in the wrong places
+- I want typesafety
+    - refactoring safe (if I rename a column, IJ should be able to rename all references to it)
+    - compiler checked (if I do something wrong, I want the compiler to tell me)
+    - again fastest feedback loop possible for agents
 -->
