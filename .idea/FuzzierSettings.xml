@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="com.mituuz.fuzzier.FuzzierSettings">
+    <option name="modules">
+      <map>
+        <entry key="demo" value="$PROJECT_DIR$/demo" />
+        <entry key="demo.main" value="$PROJECT_DIR$/demo" />
+        <entry key="demo.test" value="$PROJECT_DIR$/demo" />
+      </map>
+    </option>
+    <option name="recentFiles">
+      <list>
+        <FileAccessData>
+          <option name="accessCount" value="1" />
+          <option name="filePath" value="/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/taxiridetable.kt" />
+        </FileAccessData>
+        <FileAccessData>
+          <option name="accessCount" value="1" />
+          <option name="filePath" value="/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/taxitable.kt" />
+        </FileAccessData>
+      </list>
+    </option>
+    <option name="recentlySearchedFiles" value="rO0ABXNyABNqYXZhLnV0aWwuQXJyYXlMaXN0eIHSHZnHYZ0DAAFJAARzaXpleHAAAAACdwQAAAACc3IASGNvbS5taXR1dXouZnV6emllci5lbnRpdGllcy5GdXp6eU1hdGNoQ29udGFpbmVyJFNlcmlhbGl6ZWRNYXRjaENvbnRhaW5lctkvLD+bp8u+AgAETAAIZmlsZVBhdGh0ABJMamF2YS9sYW5nL1N0cmluZztMAAhmaWxlbmFtZXEAfgADTAAObW9kdWxlQmFzZVBhdGhxAH4AA0wABXNjb3JldAA8TGNvbS9taXR1dXovZnV6emllci9lbnRpdGllcy9GdXp6eU1hdGNoQ29udGFpbmVyJEZ1enp5U2NvcmU7eHB0AEkvc3JjL21haW4va290bGluL2NvbS9naXRodWIvZnJlZGVyaWtwaWV0emtvL2RlbW8vdGF4aS90YWJsZXMvVGF4aVRhYmxlLmt0dAAMVGF4aVRhYmxlLmt0dAA7L1VzZXJzL2ZyZWRlcmlrLnBpZXR6a28vV29ya3NwYWNlLzI2LWNvbmZpdHVyYS1leHBvc2VkL2RlbW9zcgA6Y29tLm1pdHV1ei5mdXp6aWVyLmVudGl0aWVzLkZ1enp5TWF0Y2hDb250YWluZXIkRnV6enlTY29yZXtDWSpDzcWJAgAHSQANZmlsZW5hbWVTY29yZUkADmZyZXF1ZW5jeVNjb3JlSQAPbXVsdGlNYXRjaFNjb3JlSQAQcGFydGlhbFBhdGhTY29yZUkADHJlY2VuY3lTY29yZUkAC3N0cmVha1Njb3JlTAATaGlnaGxpZ2h0Q2hhcmFjdGVyc3QAD0xqYXZhL3V0aWwvU2V0O3hwAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAFc3IAEWphdmEudXRpbC5IYXNoU2V0ukSFlZa4tzQDAAB4cHcMAAAAED9AAAAAAAAIc3IAEWphdmEubGFuZy5JbnRlZ2VyEuKgpPeBhzgCAAFJAAV2YWx1ZXhyABBqYXZhLmxhbmcuTnVtYmVyhqyVHQuU4IsCAAB4cAAAAAFzcQB+AA4AAAACc3EAfgAOAAAAA3NxAH4ADgAAAARzcQB+AA4AAAAFc3EAfgAOAAAABnNxAH4ADgAAAAdzcQB+AA4AAAAIeHNxAH4AAnQATS9zcmMvbWFpbi9rb3RsaW4vY29tL2dpdGh1Yi9mcmVkZXJpa3BpZXR6a28vZGVtby90YXhpL3RhYmxlcy9UYXhpUmlkZVRhYmxlLmt0dAAQVGF4aVJpZGVUYWJsZS5rdHQAOy9Vc2Vycy9mcmVkZXJpay5waWV0emtvL1dvcmtzcGFjZS8yNi1jb25maXR1cmEtZXhwb3NlZC9kZW1vc3EAfgAJAAAABQAAAAAAAAAAAAAAAAAAAAAAAAADc3EAfgAMdwwAAAAQP0AAAAAAAAVzcQB+AA4AAAAAcQB+ABBxAH4AEXEAfgAScQB+ABN4eA==" />
+  </component>
+</project>

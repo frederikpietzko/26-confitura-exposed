@@ -205,7 +205,7 @@ class: wishlist-slide
     - I like databases & SQL
     - I don't want to hide it and abstract it away
     - I also lean into Hexagonal Architecture often
-    - So clean domain models & Ports for persistence
+    - So clean domain models & Ports for persistence (I end up writing mappers anyways - which has gotten a lot cheaper thanks to AI)
 - is easy for llms to generate
     - LLMs should be able to write this
     - correctly, if the syntax is wrong or types don't match I want a deterministic tool to give it feedback
