@@ -186,15 +186,17 @@ select * from orders where customer_id = 3
 -->
 
 ---
+class: wishlist-slide
+---
 
-# What is the alternative?
+# Four things I want from the alternative
 
-## What I want is something that:
-
-- fit's my mental model
-- is easy for llms to generate (and debug) when provided with a skill
-- I can review easily
-- is typesafe
+<div class="wishlist">
+  <div class="wish" v-click>Fits my mental model</div>
+  <div class="wish" v-click>Easy for an LLM to write and debug</div>
+  <div class="wish" v-click>Reviewable - I see the SQL</div>
+  <div class="wish" v-click>Typesafe - compiler and refactoring</div>
+</div>
 
 <!--
 - I want something that
