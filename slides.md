@@ -68,3 +68,7 @@ src: ./pages/06-schemas-and-migrations.md
 ---
 src: ./pages/07-future-plans.md
 ---
+
+---
+src: ./pages/08-qa.md
+---

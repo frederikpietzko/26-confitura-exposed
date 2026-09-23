@@ -145,6 +145,43 @@ html.dark {
     --module-list-font-size: 1.8rem;
 }
 
+/* Closing Q&A slide (`class: section-intro qa-slide`): the headline keeps the
+   section-opener look, the QR code plus its caption sit centered on the
+   slide. The SVG is black on white, so it needs its own white plate to stay
+   scannable in dark mode. */
+.qa-slide {
+    /* The QR sits in the middle, so the text column stays narrow. */
+    --cover-text-width: 55%;
+}
+
+.qa-slide .qa-qr-block {
+    position: absolute;
+    /* Centered horizontally and vertically on the slide. */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.qa-slide .qa-qr {
+    width: 18rem;
+    height: auto;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    background: #fff;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--fundamentals-purple) 35%, transparent);
+}
+
+.qa-slide .qa-qr-caption {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-align: center;
+}
+
 /* Agenda slide: the ordered list becomes a numbered index — two-digit
    gradient numerals with a hairline rule between the entries. */
 .agenda {
