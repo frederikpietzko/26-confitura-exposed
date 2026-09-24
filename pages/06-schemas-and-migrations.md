@@ -34,7 +34,7 @@ class: code-slide
 
 # In Gradle it is a plugin, a package and a task
 
-<DrawnAnnotation type="circle" text="tablesPackage.set(&quot;com.github.frederikpietzko.demo.taxi.tables&quot;)" label="where the tables live" :geometry="{ label: { x: 0.5, y: 0.66 } }" :on="1">
+<DrawnAnnotation type="underline" text="tablesPackage.set(&quot;com.github.frederikpietzko.demo.taxi.tables&quot;)" label="where the tables live" :geometry="{ label: { x: 0.5, y: 0.66 } }" :on="1">
 <DrawnAnnotation type="underline" text="testContainersImageName.set(&quot;postgres:18-alpine&quot;)" label="the database to diff against" :geometry="{ label: { x: 0.5, y: 0.66 } }" :at="2">
 
 ```kotlin no-compile
@@ -110,8 +110,6 @@ class: code-slide
 
 # What comes out is plain SQL I review and commit
 
-<DrawnAnnotation type="underline" text="val firstName = varchar(&quot;first_name&quot;, 50)" label="the length I wrote" :geometry="{ label: { x: 0.5, y: 0.5 } }" :on="1">
-<DrawnAnnotation type="box" text="first_name VARCHAR(50) NOT NULL," label="the length I get" :geometry="{ label: { x: 0.5, y: 0.5 } }" :at="2">
 
 ```kotlin no-compile
 object DriverTable : Table("driver") {
@@ -130,9 +128,6 @@ CREATE TABLE IF NOT EXISTS driver (
     last_name VARCHAR(50) NOT NULL
 );
 ```
-
-</DrawnAnnotation>
-</DrawnAnnotation>
 
 <!--
 - One table from the demo project, and the file the plugin wrote for it

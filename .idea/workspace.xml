@@ -7,7 +7,10 @@
   <component name="ChangeListManager">
     <list default="true" id="91d706af-540e-430c-82e5-a5ceefae470b" name="Changes" comment="progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/05-exposed-in-spring.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/05-exposed-in-spring.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/DriverTable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/kotlin/com/github/frederikpietzko/demo/taxi/tables/DriverTable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/02-what-is-exposed.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/02-what-is-exposed.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/06-schemas-and-migrations.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/06-schemas-and-migrations.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/07-future-plans.md" beforeDir="false" afterPath="$PROJECT_DIR$/pages/07-future-plans.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,61 +151,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000142651813326" />
-      <entry key="MS500" value="1.1606089112719982" />
-      <entry key="S2" value="3.2859732123553633" />
-      <entry key="S5" value="7.467202271141099" />
-      <entry key="S10" value="12.279525530603237" />
-      <entry key="S30" value="21.86510527165435" />
-      <entry key="S60" value="32.509673198483554" />
-      <entry key="M2" value="52.75272718703289" />
-      <entry key="M5" value="105.97400808622925" />
-      <entry key="M10" value="179.03169756735508" />
-      <entry key="M15" value="249.112296310644" />
-      <entry key="M30" value="430.4692052659496" />
-      <entry key="H1" value="642.2712796590116" />
-      <entry key="H2" value="819.5067946865212" />
-      <entry key="H4" value="975.0720339355538" />
-      <entry key="D1" value="1614.0536382359044" />
-      <entry key="W1" value="2082.588727463982" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0001104230116311" />
+      <entry key="S2" value="1.195494955942081" />
+      <entry key="S5" value="2.1440291853371534" />
+      <entry key="S10" value="4.733867206118273" />
+      <entry key="S30" value="14.819946137300617" />
+      <entry key="S60" value="21.215567286270318" />
+      <entry key="M2" value="25.587208801454988" />
+      <entry key="M5" value="28.69493125810403" />
+      <entry key="M10" value="29.822761581263556" />
+      <entry key="M15" value="30.2095775450445" />
+      <entry key="M30" value="30.601963093978778" />
+      <entry key="H1" value="30.80037135897141" />
+      <entry key="H2" value="31.20388231588089" />
+      <entry key="H4" value="49.64995722684579" />
+      <entry key="D1" value="868.0270748582732" />
+      <entry key="W1" value="1932.2675016829808" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
-      <entry key="S5" value="2.962739512567177E-212" />
-      <entry key="S10" value="2.293448736814875E-106" />
-      <entry key="S30" value="9.573124525007476E-36" />
-      <entry key="S60" value="4.367279275810336E-18" />
-      <entry key="M2" value="2.9540106768902202E-9" />
-      <entry key="M5" value="5.871279528695051E-4" />
-      <entry key="M10" value="0.03426675904880737" />
-      <entry key="M15" value="0.1329199485234902" />
-      <entry key="M30" value="0.5156069462856759" />
-      <entry key="H1" value="1.0452874097845577" />
-      <entry key="H2" value="3.3609388984304713" />
-      <entry key="H4" value="23.832288841043756" />
-      <entry key="D1" value="268.55847316693007" />
-      <entry key="W1" value="435.3107365750507" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="4.0613208750082524E-216" />
+      <entry key="M5" value="1.0569023279772575E-86" />
+      <entry key="M10" value="1.4538649924821825E-43" />
+      <entry key="M15" value="3.483567232379273E-29" />
+      <entry key="M30" value="8.347103061154838E-15" />
+      <entry key="H1" value="1.3299772970725534E-7" />
+      <entry key="H2" value="0.001198850064976724" />
+      <entry key="H4" value="0.45010919068398725" />
+      <entry key="D1" value="138.5896762770068" />
+      <entry key="W1" value="396.05489185061776" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9794340772126789" />
-      <entry key="MS500" value="1.1554711553262116" />
-      <entry key="S2" value="3.281846553909656" />
-      <entry key="S5" value="7.462972654210028" />
-      <entry key="S10" value="12.275528626719606" />
-      <entry key="S30" value="21.862381137324142" />
-      <entry key="S60" value="32.50758191616836" />
-      <entry key="M2" value="52.75101866150873" />
-      <entry key="M5" value="105.9731338327965" />
-      <entry key="M10" value="179.06420219616152" />
-      <entry key="M15" value="249.2430618237608" />
-      <entry key="M30" value="430.9823436930774" />
-      <entry key="H1" value="643.3145238107151" />
-      <entry key="H2" value="822.8657301627851" />
-      <entry key="H4" value="998.8996918385375" />
-      <entry key="D1" value="1882.6044205083706" />
-      <entry key="W1" value="2517.8976967577555" />
+      <entry key="MS100" value="1.9878502015185047E-11" />
+      <entry key="MS500" value="0.007296241746666009" />
+      <entry key="S2" value="0.45592880740532976" />
+      <entry key="S5" value="1.6872190544331147" />
+      <entry key="S10" value="4.454841354742654" />
+      <entry key="S30" value="14.71056476195245" />
+      <entry key="S60" value="21.158274704688626" />
+      <entry key="M2" value="25.55785116026758" />
+      <entry key="M5" value="28.683008387007696" />
+      <entry key="M10" value="29.81676935442627" />
+      <entry key="M15" value="30.205575821218904" />
+      <entry key="M30" value="30.599958762988717" />
+      <entry key="H1" value="30.799368455821963" />
+      <entry key="H2" value="31.20457869467018" />
+      <entry key="H4" value="50.099727791263284" />
+      <entry key="D1" value="1006.6127398638768" />
+      <entry key="W1" value="2328.3207795237977" />
     </decayedShown>
   </component>
   <component name="OptimizeOnSaveOptions">
@@ -224,6 +227,7 @@
   "keyToString": {
     "CidrDebugProfileConversion": "true",
     "Gradle.demo [detekt].executor": "Run",
+    "Gradle.demo [generateMigrations].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -266,9 +270,10 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="gradle detekt" />
+      <command value="gradle generateMigrations" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.demo [detekt]">
+  <component name="RunManager" selected="Gradle.demo [generateMigrations]">
     <configuration default="true" type="AppleRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" IS_LOCATION_SIMULATION_SUPPORTED="false" IS_LOCATION_SIMULATION_ALLOWED="true" APPLICATION_LANGUAGE="IDELaunchSchemeLanguageUseSystemLanguage" APPLICATION_REGION="" DEVELOPMENT_TEAM="" MAKE_ACTIVE="TRUE" SHOULD_DEBUG_EXTENSIONS="false">
       <embedded_app_extension_list />
       <method v="2">
@@ -287,6 +292,31 @@
         <option name="taskNames">
           <list>
             <option value="detekt" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="demo [generateMigrations]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/demo" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="generateMigrations" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -320,6 +350,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.demo [generateMigrations]" />
         <item itemvalue="Gradle.demo [detekt]" />
       </list>
     </recent_temporary>

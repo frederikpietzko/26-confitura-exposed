@@ -12,7 +12,7 @@ class: code-slide
 # The DAO is coming to R2DBC
 
 <DrawnAnnotation type="underline" text="suspend fun getAllTaxis(): List<Taxi> =" label="today: DSL only" :geometry="{ label: { x: 0.5, y: 0.56 } }" :on="1">
-<DrawnAnnotation type="circle" text="TaxiEntity.all().toList()" label="EXPOSED-778: entities, suspending" :geometry="{ label: { x: 0.5, y: 0.56 } }" :at="2">
+<DrawnAnnotation type="underline" text="TaxiEntity.all().toList()" label="EXPOSED-778: entities, suspending" :geometry="{ label: { x: 0.5, y: 0.56 } }" :at="2">
 
 ```kotlin no-compile
 // R2DBC today

@@ -33,10 +33,10 @@ class: module-slide
 # Exposed Modules
 
 <ModuleList>
-  <ModuleRow name="exposed-core" tag="required">Type-safe SQL DSL</ModuleRow>
+  <ModuleRow name="exposed-core" tag="required">Declare Tables</ModuleRow>
   <ModuleRow name="exposed-dao" tag="optional">Entity API on top of the DSL</ModuleRow>
-  <ModuleRow name="exposed-jdbc" tag="need this or r2dbc">for blocking drivers</ModuleRow>
-  <ModuleRow name="exposed-r2dbc" tag="need this or jdbc">for non-blocking drivers, coroutines</ModuleRow>
+  <ModuleRow name="exposed-jdbc" tag="need this or r2dbc">DSL for blocking drivers</ModuleRow>
+  <ModuleRow name="exposed-r2dbc" tag="need this or jdbc">DSL for non-blocking drivers</ModuleRow>
   <ModuleRow name="exposed-spring-boot4-starter">Datasource and transactions wired up</ModuleRow>
   <ModuleRow name="exposed-java-time, -json, -money" muted>Column types you opt into</ModuleRow>
 </ModuleList>
